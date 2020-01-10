@@ -13,9 +13,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  LICENSE                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                "
-"									     "
-"	Everyone is permitted to copy and distribute verbatim or modified    "
+"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                " " Everyone is permitted to copy and distribute verbatim or modified    "
 " 	copies of this license document, and changing it is allowed as long  "
 " 			as the name is changed.                              "
 "                                                                            "
@@ -118,6 +116,12 @@ autocmd BufWritePost ~/.bmdirs,~/.bmfiles !shortcuts
 " Run xrdb whenever Xdefaults or Xresources are updated.
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
+" Update binds when sxhkdrc is updated.
+	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
 """"""""""
 "  Misc  "
 """"""""""
@@ -127,9 +131,6 @@ nnoremap S :%s//g<Left><Left>
 " Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
 vnoremap <C-c> "+y
 map <C-p> "+P
-
-" Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -143,6 +144,7 @@ map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Opens up snippets folder and lets you tab trough the files:i
 nnoremap <leader>s :r ~/.snippy/
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
