@@ -8,8 +8,7 @@
 #	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
 #	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
 #		   \/    \/              \/\/           \/            #
-#                                                                     #
-#######################################################################
+#                                                                     # #######################################################################
 
 
 #######################################################################
@@ -53,16 +52,18 @@ alias ka="killall" \
 	gp="git push" \
 	ds="dotfiles status" \
 	da="dotfiles add" \
-	dc="dotfiles commit -m" \
+	dc="dotfiles commit -m "$*"" \
 	dp="dotfiles push" \
-	dtracked="dotfiles ls-tree --full-tree -r HEAD" \
+	dotslist="dotfiles ls-tree --full-tree -r HEAD >> ~/github/tracked_dotfiles" \
 	du="du -d1 -h" \
 	backup="sudo timeshift --create" \
 	alias pkglist="pacman -Qneq > ~/.pkglist.txt" \
 	alias aurlist="pacman -Qmeq > ~/.aurlist.txt" \
+	alias piplist="pip freeze > ~/.piplist.txt" \
 	rld-i3="i3-msg reload" \
 	rld-zsh="source ~/.config/zsh/.zshrc" \
-	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc"
+	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	rld-bash="source ~/.bashrc"
 
 
 #######################################################################
@@ -93,7 +94,7 @@ eval $(history | fzf +s | sed 's/ *[0-9]* *//')
 shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
 
 #se is to search for scripts or config files, opens them up in default editor(nvim)
-se() { du -a ~/.local/bin/scripts/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
+se() { du -a ~/.local/bin/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
 
 sv() { vcopy "$(du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf)" ;}
 
@@ -121,13 +122,21 @@ fd() {
 #Search for songs on youtube, only play audio
 yl() { youtube-viewer -n $@ ;}
 
-rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
+# rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
 
 cd() { builtin cd "$@" && ls; }
 
 mkcd () {
   mkdir -p "$1"
   cd "$1"
+}
+
+# Source all configs
+function rld-all(){
+source ~/.bashrc
+source ~/.config/zsh/.zshrc
+shortcuts >/dev/null; source ~/.config/shortcutrc
+i3-msg reload
 }
 
 function gcp() {
@@ -152,4 +161,10 @@ else
     dotfiles commit -a -m $commit_msg
 fi
     dotfiles push
+}
+# Function to write out all installed packages from AUR,PIP and pacman
+function allpkgs(){
+	pacman -Qneq > ~/Documents/pkglist/pkglist.txt
+	pacman -Qmeq > ~/Documents/pkglist/aurlist.txt
+	pip freeze > ~/Documents/pkglist/piplist.txt
 }
