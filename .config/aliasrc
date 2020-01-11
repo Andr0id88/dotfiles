@@ -55,6 +55,7 @@ alias ka="killall" \
 	da="dotfiles add" \
 	dc="dotfiles commit -m" \
 	dp="dotfiles push" \
+	dtracked="dotfiles ls-tree --full-tree -r HEAD" \
 	du="du -d1 -h" \
 	backup="sudo timeshift --create" \
 	alias pkglist="pacman -Qneq > ~/.pkglist.txt" \
@@ -127,4 +128,16 @@ cd() { builtin cd "$@" && ls; }
 mkcd () {
   mkdir -p "$1"
   cd "$1"
+}
+
+function gcp() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+
+function dcp() {
+    dotfiles add -u
+    dotfiles commit -a -m "$*"
+    dotfiles push
 }

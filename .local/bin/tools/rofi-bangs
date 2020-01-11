@@ -37,7 +37,9 @@ LABELS["snippy"]=""
 COMMANDS["ssh"]="/home/kali/.local/bin/tools/pi"
 LABELS["ssh"]=""
 
-
+# connect to devices located in .ssh/config
+COMMANDS["cheatsheets"]="/home/kali/.local/bin/tools/rofi-cheat"
+LABELS["cheatsheets"]=""
 
 # show clipboard history
 # source: https://bitbucket.org/pandozer/rofi-clipboard-manager/overview

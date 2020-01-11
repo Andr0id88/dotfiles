@@ -31,6 +31,10 @@ map gsc :cd ~/.local/bin<CR>
 map tsc <tab>:cd ~/.local/bin<CR><tab>
 map Msc <tab>:cd ~/.local/bin<CR><tab>:mo<CR>
 map Ysc <tab>:cd ~/.local/bin<CR><tab>:co<CR>
+map gcs :cd ~/Documents/cheatsheets<CR>
+map tcs <tab>:cd ~/Documents/cheatsheets<CR><tab>
+map Mcs <tab>:cd ~/Documents/cheatsheets<CR><tab>:mo<CR>
+map Ycs <tab>:cd ~/Documents/cheatsheets<CR><tab>:co<CR>
 map gsct :cd ~/.local/bin/tools<CR>
 map tsct <tab>:cd ~/.local/bin/tools<CR><tab>
 map Msct <tab>:cd ~/.local/bin/tools<CR><tab>:mo<CR>

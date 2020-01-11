@@ -71,7 +71,7 @@ bindsym $mod+a			exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
 
 # Removed in favor of rofi-locate found in shxkd config
 # bindsym $mod+s			gaps inner current plus 5
-bindsym $mod+Shift+s		exec --no-startup-id rofi-search
+bindsym $mod+Shift+s		exec --no-startup-id rofi-locate
 # gaps inner current minus 5
 
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
@@ -201,4 +201,4 @@ bindsym $mod+Shift+Left		move left
 bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
-exec_always --no-startup-id notify-send -i ~/.scripts/pix/larbs.png 'Welcome  If you can read this you fixed Xorg! 👍.' -t 10000
+exec_always --no-startup-id notify-send -i ~/.local/bin/penguin.png 'Welcome  If you can read this you fixed Xorg! 👍' -t 10000

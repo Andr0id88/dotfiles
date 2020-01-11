@@ -35,6 +35,6 @@ qutebrowser and fish.
 
 The programs I use here are always changing, but luckily you can just look at the list of programs installed here:
 
-+ [List of programs installed by LARBS, including optional packages](https://github.com/Andr0id88/KARBS/blob/master/progs.csv)
++ [List of programs installed by KARBS, including optional packages](https://github.com/Andr0id88/KARBS/blob/master/progs.csv)
 
 `A` marks programs in the AUR, `G` marks git repositories.
