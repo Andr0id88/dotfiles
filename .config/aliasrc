@@ -131,13 +131,25 @@ mkcd () {
 }
 
 function gcp() {
+commit_msg="$*"
     git add .
-    git commit -a -m "$1"
+if [ -z "$commit_msg" ]
+  then
+    git commit -a -m "Uploaded by script, no commit msg added"
+else
+    git commit -a -m $commit_msg
+fi
     git push
 }
 
 function dcp() {
+commit_msg="$*"
     dotfiles add -u
-    dotfiles commit -a -m "$*"
+if [ -z "$commit_msg" ]
+  then
+    dotfiles commit -a -m "Uploaded by script, no commit msg added"
+else
+    dotfiles commit -a -m $commit_msg
+fi
     dotfiles push
 }
