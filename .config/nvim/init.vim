@@ -155,7 +155,7 @@ nnoremap <leader>s :r ~/.snippy/
 """""""""""""""
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
-let g:UltiSnipsSnippetDirectories = ['ultisnips']
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 " Personal Info
 let g:snips_author="Andre Hansen"
 let g:snips_email = "1988.hansen@gmail.com"
