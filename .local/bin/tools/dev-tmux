@@ -1,0 +1,9 @@
+#!/bin/sh
+# tmux script that gives a layout for work development and a python script using ansible to control multiple infoscreens.
+tmux new-session -d 'vim'
+tmux split-window -h -p 30 'ipython'
+tmux split-window -h
+tmux send-keys '~/gitRepos/myRepos/Infoskjerm/piChecker.py' 'Enter'
+tmux split-window -v
+tmux send-keys 'tmux clock-mode' 'Enter'
+tmux -2 attach-session -d

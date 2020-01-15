@@ -36,6 +36,9 @@ mpd >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
+# Start the ssh-agent on startup
+[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
+
 echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc"
 
 # Start graphical server if i3 not already running.

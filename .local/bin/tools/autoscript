@@ -1,0 +1,42 @@
+#!/bin/bash
+#Author:
+# ____  __.      .__  .__
+#|    |/ _|____  |  | |__|__  ______.__.________
+#|      < \__  \ |  | |  \  \/  <   |  |\___   /
+#|    |  \ / __ \|  |_|  |>    < \___  | /    /
+#|____|__ (____  /____/__/__/\_ \/ ____|/_____ \
+#        \/    \/              \/\/           \/
+#Created:on. 15. jan. 12:31:36 +0100 2020
+
+# Description:
+# Automaticly creates a script layout and uses chmod +x to make it
+# executable, if the file allready exsist the file will open in nvim on the
+# last line in insert mode.
+
+scriptdir=~/.local/bin/tools
+
+if [ -e $scriptdir/$1 ]
+then
+nvim "+normal G$" +startinsert $scriptdir/$1
+else
+echo -e "#!/bin/sh \n
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:$(date +%D)                        #
+#######################################################################
+
+#Description:
+" >> $scriptdir/$1
+sudo chmod +x ~/.local/bin/tools/$1
+nvim + "+normal G$A" +startinsert $scriptdir/$1
+fi
