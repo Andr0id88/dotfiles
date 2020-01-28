@@ -54,6 +54,7 @@ alias ka="killall" \
 	da="dotfiles add" \
 	dc="dotfiles commit -m "$*"" \
 	dp="dotfiles push" \
+	updots="dotfiles pull --rebase"
 	dotslist="dotfiles ls-tree --full-tree -r HEAD >> ~/github/tracked_dotfiles" \
 	du="du -d1 -h" \
 	backup="sudo timeshift --create" \
