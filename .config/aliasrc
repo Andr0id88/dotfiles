@@ -158,7 +158,7 @@ function ds(){
 
 function dcp() {
 commit_msg="$*"
-    dotfiles add ~/.local/bin/tools/
+    dotfiles add ~/.local/bin/tools
     dotfiles add -u
 if [ -z "$commit_msg" ]
   then
