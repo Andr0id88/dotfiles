@@ -152,7 +152,7 @@ fi
 }
 
 function ds(){
-    dotfiles add ~/.local/bin/
+    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add ~/.local/bin/
     dotfiles status
 }
 
