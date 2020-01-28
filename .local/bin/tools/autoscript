@@ -15,9 +15,9 @@
 
 scriptdir=~/.local/bin/tools
 
-if [ -e $scriptdir/$1 ]
+if [ -e $scriptdir/"$1" ]
 then
-nvim "+normal G$" +startinsert $scriptdir/$1
+nvim "+normal G$" +startinsert $scriptdir/"$1"
 else
 echo -e "#!/bin/sh \n
 #######################################################################
@@ -36,7 +36,7 @@ echo -e "#!/bin/sh \n
 #######################################################################
 
 #Description:
-" >> $scriptdir/$1
-sudo chmod +x ~/.local/bin/tools/$1
-nvim + "+normal G$A" +startinsert $scriptdir/$1
+" >> $scriptdir/"$1"
+sudo chmod +x ~/.local/bin/tools/"$1"
+nvim + "+normal G$A" +startinsert $scriptdir/"$1"
 fi
