@@ -50,7 +50,6 @@ alias ka="killall" \
 	ga="git add ." \
 	gc="git commit -m" \
 	gp="git push" \
-	ds="dotfiles status" \
 	da="dotfiles add" \
 	dc="dotfiles commit -m "$*"" \
 	dp="dotfiles push" \
@@ -152,8 +151,14 @@ fi
     git push
 }
 
+function ds(){
+    dotfiles add ~/.local/bin/
+    dotfiles status
+}
+
 function dcp() {
 commit_msg="$*"
+    dotfiles add ~/.local/bin/tools/
     dotfiles add -u
 if [ -z "$commit_msg" ]
   then
