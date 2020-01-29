@@ -20,3 +20,6 @@
 # Only tested for Arch but should work pretty much the same on other distros
 
 /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add ~/.config/getkeys/* ~/.config/htop ~/.config/i3/config ~/.config/i3blocks/config ~/.config/mpd/mpd.conf ~/.config/mpv/input.conf ~/.config/nvim/init.vim ~/.config/nvim/UltiSnips/* ~/.config/ranger/* ~/.config/surfraw/* ~/.config/vifm/* ~/.config/zathura/zathurarc ~/.config/aliasrc ~/.config/bmdirs ~/.config/bmdirs ~/.config/shortcutrc ~/.local/bin/* ~/.bash_profile ~/.bashrc ~/.inputrc ~/.profile ~/.tmux.conf ~/.vimrc ~/.xinitrc ~/.xprofile ~/.zprofile ~/README.md
+
+
+## TODO: Need to fix this script some more to auto update all my files and run it before dcp function from bashrc for ultimate automation of dotfiles! Because atm it wont track new scripts in my scripts folder which is kind of a bummer!
