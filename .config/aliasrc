@@ -53,6 +53,7 @@ alias ka="killall" \
 	da="dotfiles add" \
 	dc="dotfiles commit -m "$*"" \
 	dp="dotfiles push" \
+	ds="dotfiles status" \
 	updots="dotfiles pull --rebase" \
 	dotslist="dotfiles ls-tree --full-tree -r HEAD >> ~/github/tracked_dotfiles" \
 	du="du -d1 -h" \
@@ -149,11 +150,6 @@ else
     git commit -a -m $commit_msg
 fi
     git push
-}
-
-function ds(){
-    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add ~/.local/bin/
-    dotfiles status
 }
 
 function dcp() {
