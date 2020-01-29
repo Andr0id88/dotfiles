@@ -23,3 +23,4 @@
 
 
 ## TODO: Need to fix this script some more to auto update all my files and run it before dcp function from bashrc for ultimate automation of dotfiles! Because atm it wont track new scripts in my scripts folder which is kind of a bummer! Also try and fix this in a giga script eventually that will auto install complete packages from pkglist and aur packages, pip etc on a freshly installed machine.. Good idea to test this on a docker box first....
+# Test test test and test before running on main machines!!!
