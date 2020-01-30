@@ -39,7 +39,6 @@ echo -e "#!/bin/sh \n
 
 #Description:
 " >> $scriptdir/"$1"
-
 # Make the script executable
 sudo chmod +x ~/.local/bin/tools/"$1"
 # Adds script to my git bare repo (dotfiles)
