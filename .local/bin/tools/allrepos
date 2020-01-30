@@ -17,5 +17,5 @@
 
 #Description:
 # Prints all git repos from a user
-
+# Can be piped to dlrepos to download every single repo from a user
 curl -s https://api.github.com/users/$1/repos?per_page=1000 | grep -oP '(?<="git_url": ").*(?="\,)'
