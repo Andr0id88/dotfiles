@@ -4,4 +4,4 @@
 setxkbmap no
 exec i3
 
-startsync
+exec startsync
