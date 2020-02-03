@@ -1,13 +1,11 @@
 # vim: filetype=i3
-#File originally by Luke Smith <https://lukesmith.xyz>
+# File originally by Luke Smith <https://lukesmith.xyz>
 
 # This config file will use environmental variables such as $BROWSER and $TERMINAL.
 # You can set these variables in ~/.profile or ~/.bash_profile if you have it as below:
 #
 # export FILE="ranger"
 # export TERMINAL="st"
-
-exec --no-startup-id nm-applet
 
 # #---Basic Definitions---# #
 for_window [class="^.*"] border pixel 2
@@ -38,7 +36,6 @@ bar {
 
 # #---Basic Bindings---# #
 bindsym $mod+Shift+Return	exec --no-startup-id samedir
-
 bindsym $mod+Shift+space 	floating toggle
 bindsym $mod+space		focus mode_toggle
 
@@ -51,6 +48,8 @@ bindsym $mod+Shift+Delete	exec --no-startup-id lmc truemute ; exec --no-startup-
 # #---Letter Key Bindings---# #
 bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+
+bindsym $mod+Shift+p		exec --no-startup-id movies
 
 bindsym $mod+Shift+r		exec --no-startup-id winresize
 
@@ -69,15 +68,10 @@ bindsym $mod+Shift+o		exec --no-startup-id i3resize right
 
 bindsym $mod+a			exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
 
-# Removed in favor of rofi-locate found in shxkd config
-# bindsym $mod+s			gaps inner current plus 5
-bindsym $mod+Shift+s		exec --no-startup-id rofi-locate
-# gaps inner current minus 5
+bindsym $mod+s			exec --no-startup-id rofi-bangs
+bindsym $mod+Shift+s		gaps inner current minus 5
 
-# bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+d		exec --no-startup-id dmenu_run
-
-bindsym $mod+Shift+v		exec --no-startup-id vis
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
 mode "$freeze" { bindsym $mod+Shift+f mode "default"
@@ -111,8 +105,7 @@ bindsym $mod+c			exec --no-startup-id cabl
 
 bindsym $mod+v			exec --no-startup-id $term -e $EDITOR -c "VimwikiIndex"
 
-# Removed in favor of rofi-bookmarks
-# bindsym $mod+b			bar mode toggle
+bindsym $mod+b			exec --no-startup-id rofi-surf-bookmarks
 bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id hover left
 
 bindsym $mod+Shift+n		floating toggle; sticky toggle; exec --no-startup-id hover right
@@ -202,4 +195,4 @@ bindsym $mod+Shift+Left		move left
 bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
-exec_always --no-startup-id notify-send -i ~/.local/bin/penguin.png 'Welcome  If you can read this you fixed Xorg! 👍' -t 10000
+exec_always --no-startup-id notify-send -i ~/.local/share/larbs/larbs.png 'Welcome to LARBS:' 'Press Super+F1 for the manual.' -t 10000
