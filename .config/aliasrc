@@ -125,12 +125,12 @@ yl() { youtube-viewer -n $@ ;}
 
 # rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
 
-cd() { builtin cd "$@" && ls; }
+# cd() { builtin cd "$@" && ls; }
 
-mkcd () {
-  mkdir -p "$1"
-  cd "$1"
-}
+# mkcd () {
+#   mkdir -p "$1"
+#   cd "$1"
+# }
 
 # Source all configs
 function rld-all(){

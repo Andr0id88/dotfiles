@@ -18,7 +18,7 @@
 #Description:
 # Creates folder structure for arch linux
 
-mkdir -p $HOME/devops/{ansible,docker,jenkins,k8s,puppet}
+mkdir -p $HOME/devops/{ansible,docker,jenkins,k8s,puppet,vagrant,powershell}
 
 mkdir -p $HOME/Documents/{cheatsheets,dotfiles,pkglist}
 
@@ -30,4 +30,4 @@ mkdir -p $HOME/Videos/{tutorials,series,movies}
 
 mkdir $HOME/Music $HOME/sourcecode
 
-mkdir $HOME/Pictures{wallpaper,people,logo,meme}
+mkdir $HOME/Pictures/{wallpaper,people,logo,meme}
