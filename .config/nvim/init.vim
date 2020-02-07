@@ -49,9 +49,12 @@ Plug 'mattn/emmet-vim'			" HTML creator on steroids
 Plug 'jiangmiao/auto-pairs'		" Automatically matches brackets
 Plug 'Shougo/deoplete.nvim'		" Autocompleter for vim
 Plug 'tpope/vim-repeat'			" Enables . to be used with vim-surround
-Plug 'easymotion/vim-easymotion'
-Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
+Plug 'easymotion/vim-easymotion' 	" Easier navigation just type s to activate
+Plug 'morhetz/gruvbox'			" Theme for vim\nvim
+Plug 'ryanoasis/vim-devicons'           " Iconpack for nvim
+Plug 'dbeniamine/cheat.sh-vim'          " Cheatcheat in vim, hoover over word and press leader + KB to activate
+Plug 'kovetskiy/sxhkd'			" Syntax and indent for sxhkd cfg
+
 call plug#end()
 
 

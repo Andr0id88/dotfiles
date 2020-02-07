@@ -64,7 +64,8 @@ alias ka="killall" \
 	rld-i3="i3-msg reload" \
 	rld-zsh="source ~/.config/zsh/.zshrc" \
 	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	rld-bash="source ~/.bashrc"
+	rld-bash="source ~/.bashrc" \
+	tmux='TERM=screen-256color tmux'
 
 
 #######################################################################
