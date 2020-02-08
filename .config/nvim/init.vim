@@ -74,6 +74,7 @@ set clipboard=unnamedplus
 set mouse=a
 set splitbelow splitright	"Splits open at the bottom right
 set showmatch			"Show matching brackets when hovvered over
+set tabstop=2 shiftwidth=2 expandtab "Use spaces instead of tab must have for yml files!
 
 """"""""""""
 "  Search  "
