@@ -5,6 +5,28 @@ autoload -U colors && colors
 # PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 
+# ------------------------------- PLUGINS --------------------------------
+source ~/.config/zsh/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle  zsh-users/zsh-autosuggestions
+
+# Load the theme.
+
+# Tell Antigen that you're done.
+antigen apply
+
+
 # ----- promt -----
 PS1="%F{cyan} %~ >%F{blue}> %F{white}"
 
@@ -154,9 +176,7 @@ bindkey '^ ' autosuggest-accept #Autosuggest-accept
 
 # ----- plugins -----
 PLUGINS_DIR=/usr/share/zsh/plugins/
-source $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $PLUGINS_DIR/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 eval $(thefuck --alias) # Needed for the fuck command
 zstyle :compinstall filename '/home/kali/.zshrc'
 
