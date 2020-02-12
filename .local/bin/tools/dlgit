@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #######################################################################
 #                                Author                               #
@@ -43,12 +43,15 @@ centerQ "#######################################################################
 my_array=()
 while IFS= read -r line; do
     my_array+=( "$line" )
-done < <(curl -s https://api.github.com/users/$1/repos?per_page=1000 | grep -oP '(?<="git_url": ").*(?="\,)')
+done< <(curl -s https://api.github.com/users/$1/repos?per_page=1000 | grep -oP '(?<="git_url": ").*(?="\,)')
 
-echo "What git repo u wanna show?"
+printf "\n\n"
+
+centerQ  "Choose the github repo you wanna download"
+
+printf "\n\n"
 
 select num in "${my_array[@]}"
 do
     git clone "$num"
 done
-
