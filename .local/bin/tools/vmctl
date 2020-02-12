@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:02/12/20                     #
+#######################################################################
+
+#Description:
+# Control VM's from CLI
+
+
+# if no command line arg given
+# set rental to Unknown
+if [ -z $1 ]
+then
+  vm="*** No VM spesified use $0 VM-NAME to control a vm***"
+elif [ -n $1 ]
+then
+# otherwise make first arg as a VM
+  vm=$1
+fi
+
+vm1="Kali Linux"
+vm2="Windows10Vurn"
+
+# use case statement to make decision for rental
+case $vm in
+   "Kali") echo "For $vm1 rental is Rs.20 per k/m.";;
+   "Win10") echo "For $vm2 rental is Rs.10 per k/m.";;
+   *) echo "Use $0 start\stop VM-NAME to control a vm"
+esac
