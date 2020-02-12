@@ -12,30 +12,65 @@
 #		   \/    \/              \/\/           \/            #
 #                                                                     #
 #######################################################################
-#                             Created:02/12/20                     #
-#######################################################################
+#                             Created:02/12/20                     # #######################################################################
 
 #Description:
-# Control VM's from CLI
+# My own tool to easily control VM's from the CLI
+
+tmpf="$HOME/.local/bin/tools/vmlist.tmp"
 
 
-# if no command line arg given
-# set rental to Unknown
-if [ -z $1 ]
+printf "Please enter the name of the VM you want to run\n\n"
+
+# Outputs installed VM names to a tmp file
+VBoxManage list vms | cut -d '"' -f2 > $tmpf
+# VBoxManage list vms | cut -d '"' -f2
+
+vm1=$(sed '1!d' $tmpf)
+vm2=$(sed '2!d' $tmpf)
+vm3=$(sed '3!d' $tmpf)
+
+
+printf "1. Start PentestLab\n2. Start VM\n3. Stop VM\n"
+read -p "What do you want to do?" choice
+
+if [ $choice -eq 1 ]
 then
-  vm="*** No VM spesified use $0 VM-NAME to control a vm***"
-elif [ -n $1 ]
+VBoxManage startvm "$vm1" --type gui
+VBoxManage startvm "$vm3" --type gui
+elif [ $choice -eq 2 ]
 then
-# otherwise make first arg as a VM
-  vm=$1
+
+  printf "1.Start $vm1\n2.Start $vm2\n3.Start $vm3\n"
+  read -p "What VM do you wish to start?" vmstart
+
+  if [ $vmstart -eq 1 ]
+  then
+    VBoxManage startvm "$vm1" --type gui
+  elif [ $vmstart -eq 2 ]
+  then
+    VBoxManage startvm "$vm2" --type gui
+  elif [ $vmstart -eq 3 ]
+  then
+    VBoxManage startvm "$vm3" --type gui
+  fi
+
+elif [ $choice -eq 3 ]
+then
+
+  printf "1.Stop $vm1\n2.Stop $vm2\n3.Stop $vm3\n"
+  read -p "What VM do you wish to stop?" vmstop
+
+  if [ $vmstop -eq 1 ]
+  then
+    VBoxManage controlvm "$vm1" poweroff
+  elif [ $vmstop -eq 2 ]
+  then
+    VBoxManage controlvm "$vm2" poweroff
+  elif [ $vmstop -eq 3 ]
+  then
+    VBoxManage controlvm "$vm3" poweroff
+  fi
+  echo "nothing happened"
 fi
 
-vm1="Kali Linux"
-vm2="Windows10Vurn"
-
-# use case statement to make decision for rental
-case $vm in
-   "Kali") echo "For $vm1 rental is Rs.20 per k/m.";;
-   "Win10") echo "For $vm2 rental is Rs.10 per k/m.";;
-   *) echo "Use $0 start\stop VM-NAME to control a vm"
-esac
