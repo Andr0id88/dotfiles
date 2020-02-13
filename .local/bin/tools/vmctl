@@ -34,7 +34,6 @@ centerQ "#                  Lazy script for VirtualBox                         #
 centerQ "#                       Made by Kalixyz                               #"
 centerQ "#######################################################################"
 
-printf "Please enter the name of the VM you want to run\n\n"
 
 # Outputs installed VM names to a tmp file
 VBoxManage list vms | cut -d '"' -f2 > $tmpf
@@ -45,7 +44,7 @@ vm2=$(sed '2!d' $tmpf)
 vm3=$(sed '3!d' $tmpf)
 
 
-printf "1. Start PentestLab\n2. Start VM\n3. Stop VM\n"
+printf "\n1. Start PentestLab\n2. Start VM\n3. Stop VM\n\n"
 read -p "What do you want to do?" choice
 
 if [ $choice -eq 1 ]
