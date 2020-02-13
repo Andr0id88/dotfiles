@@ -17,8 +17,22 @@
 #Description:
 # My own tool to easily control VM's from the CLI
 
+# Will be shortened alot and made smarter but atm this works for
+# the purpose i use it for 2020-02-12
+
 tmpf="$HOME/.local/bin/tools/vmlist.tmp"
 
+centerQ(){
+  textsize=${#1}
+  width=$(tput cols)
+  span=$((($width + $textsize) / 2))
+  printf "%${span}s\n" "$1"
+}
+
+centerQ "#######################################################################"
+centerQ "#                  Lazy script for VirtualBox                         #"
+centerQ "#                       Made by Kalixyz                               #"
+centerQ "#######################################################################"
 
 printf "Please enter the name of the VM you want to run\n\n"
 

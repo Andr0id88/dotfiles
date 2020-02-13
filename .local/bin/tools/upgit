@@ -17,9 +17,12 @@
 
 #Description:
 # Lazy script for running git pull --rebase on all my repo's on startup
+# Not finish, needs a method to loop through variables (array?) and
+# a method to resolve conflicts in a nice way.
 
 devops=$HOME/devops
 vimwiki=$HOME/vimwiki
 infoskjerm=$HOME/github/myrepos/Infoskjerm
+fagprove=$HOME/github/myrepos/
 
 
