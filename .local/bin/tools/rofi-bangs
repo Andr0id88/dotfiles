@@ -41,6 +41,10 @@ LABELS["ssh"]=""
 COMMANDS["cheatsheets"]="/home/kali/.local/bin/tools/rofi-cheat"
 LABELS["cheatsheets"]=""
 
+# connect to devices located in .ssh/config
+COMMANDS["movies"]="/home/kali/.local/bin/tools/rofi-vid"
+LABELS["movies"]=""
+
 # show clipboard history
 # source: https://bitbucket.org/pandozer/rofi-clipboard-manager/overview
 # COMMANDS["clipboard"]='rofi -modi "clipboard:~/.bin/rofi-clipboard-manager/mclip.py menu" -show clipboard && ~/.bin/rofi-clipboard-manager/mclip.py paste'
