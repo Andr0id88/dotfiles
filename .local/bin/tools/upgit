@@ -17,12 +17,11 @@
 
 #Description:
 # Lazy script for running git pull --rebase on all my repo's on startup
-# Not finish, needs a method to loop through variables (array?) and
-# a method to resolve conflicts in a nice way.
-
-devops=$HOME/devops
-vimwiki=$HOME/vimwiki
-infoskjerm=$HOME/github/myrepos/Infoskjerm
-fagprove=$HOME/github/myrepos/
+# Under construction
+mygit=$HOME/github/myrepos
+cd $HOME
+find . -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git status" \;
 
 
+# find all git repositories and perform a pull operation on them.
+# find . -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git pull" \;
