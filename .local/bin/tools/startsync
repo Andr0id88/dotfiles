@@ -20,8 +20,4 @@
 
 /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME pull --rebase
 
-cd ~/vimwiki/
-
-git pull --rebase
-
 notify-send "VimWiki and dotfiles synced..."
