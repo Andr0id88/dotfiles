@@ -17,9 +17,8 @@
 
 #Description:
 # Lazy script for running git pull --rebase on all my repo's on startup
-# Under construction
-mygit=$HOME/github/myrepos
-cd $HOME
+# Also updates my dotfile git bare repo
+cd $HOME/github/myrepos
 find . -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git status" \;
 
 

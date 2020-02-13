@@ -3,4 +3,3 @@
 [ -f "$HOME/.xprofile" ] && . ~/.xprofile
 setxkbmap no
 exec i3
-hpage
