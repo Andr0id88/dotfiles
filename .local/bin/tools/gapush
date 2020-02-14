@@ -17,3 +17,22 @@
 
 #Description:
 # Push all git repos from my git repo folders
+
+# Location of all my github projects
+mygit=$HOME/github/myrepos
+
+# Function to run on all my local git repo folders
+gcp() {
+commit_msg="$*"
+    git add .
+if [ -z "$commit_msg" ]
+  then
+    git commit -a -m "Uploaded by script, no commit msg added"
+else
+    git commit -a -m "$commit_msg"
+fi
+    git push
+}
+
+# Find all git repo folders and run the function gcp on them
+find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && gcp" \;
