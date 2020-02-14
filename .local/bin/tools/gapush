@@ -26,7 +26,7 @@ mygit=$HOME/github/myrepos
 dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # Function to run on all my local git repo folders
-gcp=git add . && git commit -a -m "Uploaded by script, no commit msg added" && git push
+gcp="git add . && git commit -a -m "Uploaded by script, no commit msg added" && git push"
 
 
 # Function to run on all my dotfiles
