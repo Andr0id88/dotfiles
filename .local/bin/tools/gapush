@@ -17,6 +17,9 @@
 
 #Description:
 # Push all git repos from my git repo folders and my dotfiles bare repo
+# This still needs alot of work and maybe even a complete rebuild.
+# Need a check on all folders to see if git add . and git commit exited sucsessfully and if so go on to git push
+# Otherwise it needs to skip that folder.
 
 # Location of all my github projects
 mygit=$HOME/github/myrepos
@@ -39,13 +42,13 @@ addcompush="git add . && git commit -a -m "Uploaded by script, no commit msg" &&
 
 
 # Find all git repo folders and run git add + git commit + git push on them
-find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git add ." \;
+find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git add . && git commit -a -m "Uploaded by script, no commit msg added" & git push" \;
 
-find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git commit -a -m "Uploaded by script, no commit msg added"" \;
+# find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git commit -a -m "Uploaded by script, no commit msg added"" \;
 
-if [[ $? -ne 1 ]]; then
-  find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
-fi
+# if [[ $? -ne 1 ]]; then
+#   find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
+# fi
 
 # find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
 
