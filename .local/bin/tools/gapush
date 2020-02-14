@@ -27,14 +27,8 @@ dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # Function to run on all my local git repo folders
 gcp() {
-commit_msg="$*"
     git add .
-if [ -z "$commit_msg" ]
-  then
     git commit -a -m "Uploaded by script, no commit msg added"
-else
-    git commit -a -m "$commit_msg"
-fi
     git push
 }
 
