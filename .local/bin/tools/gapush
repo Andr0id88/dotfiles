@@ -41,7 +41,7 @@ dcp() {
 
 
 # Find all git repo folders and run the function gcp on them
-find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && ${gcp}" \;
+find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && gcp" \;
 
 # Upload all my new dotfiles to github
 dcp
