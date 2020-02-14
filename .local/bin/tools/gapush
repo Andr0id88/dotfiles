@@ -43,8 +43,11 @@ find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git
 
 find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git commit -a -m "Uploaded by script, no commit msg added"" \;
 
-find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
+if [[ $? -ne 1 ]]; then
+  find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
+fi
 
+# find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git push" \;
 
 # Upload all my new dotfiles to github
 dcp
