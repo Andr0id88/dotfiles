@@ -12,14 +12,11 @@
 #		   \/    \/              \/\/           \/            #
 #                                                                     #
 #######################################################################
-#                             Created:02/12/20                     #
+#                             Created:02/14/20                     #
 #######################################################################
 
 #Description:
-# Lazy script for running git pull --rebase on all my repo's on startup
-# Also updates my dotfile git bare repo
-cd $HOME/github/myrepos
-find . -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git status" \;
+# Show status on all git repos in github/myrepos
 
-# find all git repositories and perform a pull operation on them.
-# find . -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git pull" \;
+mygit=$HOME/github/myrepos
+find $mygit -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git status" \;
