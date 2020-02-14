@@ -25,9 +25,6 @@ mygit=$HOME/github/myrepos
 # My dotfile alias to my git bare repo
 dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
-# Function to run on all my local git repo folders
-gcp="git add . && git commit -a -m "Uploaded by script, no commit msg added" && git push"
-
 
 # Function to run on all my dotfiles
 dcp() {
@@ -37,8 +34,9 @@ dcp() {
 }
 
 
-# Find all git repo folders and run the function gcp on them
+# Find all git repo folders and run git add + git commit + git push on them
 find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && git add . && git commit -a -m "Uploaded by script, no commit msg" && git push" \;
+
 
 # Upload all my new dotfiles to github
 dcp
