@@ -16,10 +16,14 @@
 #######################################################################
 
 #Description:
-# Push all git repos from my git repo folders
+# Push all git repos from my git repo folders and my dotfiles bare repo
 
 # Location of all my github projects
 mygit=$HOME/github/myrepos
+
+
+# My dotfile alias to my git bare repo
+dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # Function to run on all my local git repo folders
 gcp() {
@@ -34,5 +38,16 @@ fi
     git push
 }
 
+# Function to run on all my dotfiles
+dcp() {
+    $dotfiles add -u
+    $dotfiles commit -a -m "Uploaded by script, no commit msg added"
+    $dotfiles push
+}
+
+
 # Find all git repo folders and run the function gcp on them
 find "$mygit" -name ".git" -type d -exec bash -c "echo '{}' && cd '{}'/.. && gcp" \;
+
+# Upload all my new dotfiles to github
+dcp
