@@ -1,3 +1,4 @@
+#!/bin/bash
 #Description:
 # Pull --rebase all git repos in my repo folders and also my dotfiles
 
