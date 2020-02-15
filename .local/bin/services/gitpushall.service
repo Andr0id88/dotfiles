@@ -1,0 +1,11 @@
+[Unit]
+Description= Push all git repos and dotfiles before shutdown
+
+[Service]
+Type=oneshot
+User=kali
+RemainAfterExit=true
+ExecStop=/home/kali/.local/bin/services/gitpushall.sh
+
+[Install]
+WantedBy=multi-user.target

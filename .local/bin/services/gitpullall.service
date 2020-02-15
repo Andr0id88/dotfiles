@@ -1,0 +1,14 @@
+[Unit]
+Description=Pull all dotfiles and git repos on startup
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=kali
+WorkingDirectory=/home/kali
+ExecStart=/home/kali/.local/bin/services/gitpullall.sh
+
+[Install]
+WantedBy=multi-user.target
+
