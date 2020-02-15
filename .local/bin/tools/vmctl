@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #######################################################################
 #                                Author                               #
@@ -17,11 +17,6 @@
 #Description:
 # My own tool to easily control VM's from the CLI
 
-# Will be shortened alot and made smarter but atm this works for
-# the purpose i use it for 2020-02-12
-
-tmpf="$HOME/.local/bin/tools/vmlist.tmp"
-
 centerQ(){
   textsize=${#1}
   width=$(tput cols)
@@ -29,61 +24,46 @@ centerQ(){
   printf "%${span}s\n" "$1"
 }
 
+
 centerQ "#######################################################################"
 centerQ "#                  Lazy script for VirtualBox                         #"
 centerQ "#                       Made by Kalixyz                               #"
 centerQ "#######################################################################"
 
 
-# Outputs installed VM names to a tmp file
-VBoxManage list vms | cut -d '"' -f2 > $tmpf
-# VBoxManage list vms | cut -d '"' -f2
-
-vm1=$(sed '1!d' $tmpf)
-vm2=$(sed '2!d' $tmpf)
-vm3=$(sed '3!d' $tmpf)
+# Stores all currently installed VMs into an array
+my_vms=()
+while IFS= read -r line; do
+  my_vms+=( "$line" )
+done< <(VBoxManage list vms | cut -d '"' -f2)
 
 
-printf "\n1. Start PentestLab\n2. Start VM\n3. Stop VM\n\n"
+printf "\n1. Start VM\n2. Stop VM\n\n"
 read -p "What do you want to do?" choice
 
-if [ $choice -eq 1 ]
+if [ "$choice" -eq 1 ]
 then
-VBoxManage startvm "$vm1" --type gui
-VBoxManage startvm "$vm3" --type gui
-elif [ $choice -eq 2 ]
+  clear
+centerQ "##################################################"
+centerQ "#  Choose the Virtual Machine you want to start  #"
+centerQ "##################################################"
+printf "\n\n"
+
+select vm in "${my_vms[@]}"
+  do
+    VBoxManage startvm "$vm" --type gui
+  done
+
+elif [ "$choice" -eq 2 ]
 then
+  clear
+centerQ "##################################################"
+centerQ "#  Choose the Virtual Machine you want to stop   #"
+centerQ "##################################################"
+printf "\n\n"
 
-  printf "1.Start $vm1\n2.Start $vm2\n3.Start $vm3\n"
-  read -p "What VM do you wish to start?" vmstart
-
-  if [ $vmstart -eq 1 ]
-  then
-    VBoxManage startvm "$vm1" --type gui
-  elif [ $vmstart -eq 2 ]
-  then
-    VBoxManage startvm "$vm2" --type gui
-  elif [ $vmstart -eq 3 ]
-  then
-    VBoxManage startvm "$vm3" --type gui
-  fi
-
-elif [ $choice -eq 3 ]
-then
-
-  printf "1.Stop $vm1\n2.Stop $vm2\n3.Stop $vm3\n"
-  read -p "What VM do you wish to stop?" vmstop
-
-  if [ $vmstop -eq 1 ]
-  then
-    VBoxManage controlvm "$vm1" poweroff
-  elif [ $vmstop -eq 2 ]
-  then
-    VBoxManage controlvm "$vm2" poweroff
-  elif [ $vmstop -eq 3 ]
-  then
-    VBoxManage controlvm "$vm3" poweroff
-  fi
-  echo "nothing happened"
+  select vm in "${my_vms[@]}"
+  do
+    VBoxManage controlvm "$vm" poweroff
+  done
 fi
-
