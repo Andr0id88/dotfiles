@@ -21,7 +21,7 @@ then
 nvim "+normal G$" +startinsert $scriptdir/"$1"
 else
 # Adds author, date, and description layout for the newly created script.
-echo -e "#!/bin/sh \n
+echo -e "#!/bin/bash \n
 #######################################################################
 #                                Author                               #
 #######################################################################

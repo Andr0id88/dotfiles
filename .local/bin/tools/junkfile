@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #######################################################################
 #                                Author                               #
@@ -22,7 +22,7 @@ DEST=$1
 
 if [ $# -ne 1 ]; then
   for i in {1..100}; do echo -e "This is line number$i of this junk testfile" >> $PWD/testfile; done
-  echo "No arrgument passed creating file in $PWD/junkfile"
+  echo "No arrgument passed creating file in $PWD/testfile"
   echo "Another way to use this script is: $0 destination/path"
 else
   for i in {1..100}; do echo -e "This is line number$1 of this junk testfile" >> $DEST/testfile; done
@@ -33,5 +33,3 @@ if [ $? -eq 0 ]; then
 else
   echo Something went wrong...
 fi
-
-
