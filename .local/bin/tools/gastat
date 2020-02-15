@@ -56,7 +56,6 @@ do
    printf "#     %s     #" "$folder"
    printf "##############\n"
    cd "$mygitfolder/$folder" || printf "%s is not a folder....skipping" "$folder";
-   # printf "\n\nChecking the %s repo " "$folder"
    git status
 
  done
