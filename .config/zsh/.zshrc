@@ -1,4 +1,17 @@
-# Luke's config for the Zoomer Shell
+# ____  __.      .__  .__
+# |    |/ _|____  |  | |__|__  ______.__.________
+# |      < \__  \ |  | |  \  \/  <   |  |\___   /
+# |    |  \ / __ \|  |_|  |>    < \___  | /    /
+# |____|__ (____  /____/__/__/\_ \/ ____|/_____ \
+#        \/    \/              \/\/           \/
+
+# File: .zshrc
+# Author: Andre Hansen
+# Description: My zshrc file
+# Last Modified: 2020-02-19
+
+
+
 autoload -U colors && colors
 
 #Old Luke Smith Prompt
@@ -177,6 +190,7 @@ bindkey '^ ' autosuggest-accept #Autosuggest-accept
 # ----- plugins -----
 PLUGINS_DIR=/usr/share/zsh/plugins/
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+[[ -s /home/kali/.autojump/etc/profile.d/autojump.sh ]] && source /home/kali/.autojump/etc/profile.d/autojump.sh
 eval $(thefuck --alias) # Needed for the fuck command
 zstyle :compinstall filename '/home/kali/.zshrc'
 
