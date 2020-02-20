@@ -28,7 +28,7 @@
 dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 
-# Super ugly but it is needed to look for new untracked files in these locations or after a fresh install using larbs
+# Super ugly but it is needed to look for new untracked files in these locations or after a fresh install using karbs
 $dotfiles add ~/.config/getkeys/* ~/.config/htop ~/.config/i3/config ~/.config/i3blocks/config ~/.config/mpd/mpd.conf ~/.config/mpv/input.conf ~/.config/nvim/init.vim ~/.config/nvim/UltiSnips/* ~/.config/ranger/* ~/.config/surfraw/* ~/.config/vifm/* ~/.config/zathura/zathurarc ~/.config/aliasrc ~/.config/bmdirs ~/.config/bmdirs ~/.config/shortcutrc ~/.local/bin/* ~/.bash_profile ~/.bashrc ~/.inputrc ~/.profile ~/.tmux.conf ~/.vimrc ~/.xinitrc ~/.zprofile ~/.config/sxhkd/sxhkdrc ~/.config/dunst/dunstrc ~/.config/sxiv/"exec"/key-handler ~/.config/newsboat/config ~/.config/newsboat/urls ~/.config/mimeapps.list
 
 
