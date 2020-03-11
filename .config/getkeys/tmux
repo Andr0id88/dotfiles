@@ -1,0 +1,57 @@
+                         _
+                        | |_ _ __ ___  _   ___  __
+                        | __| '_ ` _ \| | | \ \/ /
+                        | |_| | | | | | |_| |>  <
+                         \__|_| |_| |_|\__,_/_/\_\
+
+In tmux, hit the prefix ctrl+b (my modified prefix is ctrl+a) and then:
+                      Toggle mouse with prefix + m
+-----------------------------------------------------------------------
+-                              Sessions                               -
+-----------------------------------------------------------------------
+
+C-f find session
+C-c create session
+s  list sessions
+$  name session
+
+-----------------------------------------------------------------------
+-                               Windows                               -
+-----------------------------------------------------------------------
+
+c   create window
+w   list windows
+C-h previous-window
+C-l next-window
+Tab last-window
+f  find window
+,  name window
+&  kill window
+
+-----------------------------------------------------------------------
+-                                Panes                                -
+-----------------------------------------------------------------------
+
+h  move left
+j  move down
+k  move up
+l  move right
+_  vertical split
+-  horizontal split
+o  swap panes
+x  kill pane
+q (Show pane numbers, when the numbers show up type the key to goto that pane)
++  break pane into window (e.g. to select text by mouse to copy)
+-  restore pane from window
+⍽  space - toggle between layouts
+z toggle pane zoom
+{ (Move the current pane left)
+} (Move the current pane right)
+> swap current pane with the next one
+< swap current pane with the previous one
+
+# pane resizing
+H Left resize
+J Down resize
+K Up resize
+L Right Resize
