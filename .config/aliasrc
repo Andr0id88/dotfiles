@@ -55,7 +55,7 @@ alias ka="killall" \
 	dp="dotfiles push" \
 	ds="dotfiles status" \
 	updots="dotfiles pull --rebase" \
-	dotslist="dotfiles ls-tree --full-tree -r HEAD >> ~/github/tracked_dotfiles" \
+	lsdots="dotfiles ls-tree --full-tree -r --name-only HEAD "$@" | treeify" \
 	du="du -d1 -h" \
 	backup="sudo timeshift --create" \
 	pkglist="pacman -Qneq > ~/.pkglist.txt" \
@@ -170,3 +170,4 @@ function allpkgs(){
 	pacman -Qmeq > ~/Documents/pkglist/aurlist.txt
 	pip freeze > ~/Documents/pkglist/piplist.txt
 }
+

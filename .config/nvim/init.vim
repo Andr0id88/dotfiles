@@ -13,23 +13,24 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  LICENSE                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                " " Everyone is permitted to copy and distribute verbatim or modified    "
-" 	copies of this license document, and changing it is allowed as long  "
-" 			as the name is changed.                              "
+"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                "
+"       Everyone is permitted to copy and distribute verbatim or modified    "
+" 	    copies of this license document, and changing it is allowed as long  "
+" 			                as the name is changed.                              "
 "                                                                            "
-" 		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE		     "
-"	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION      "
+" 		             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE		           "
+"	      TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION      "
 "                                                                            "
-"  		0. You just DO WHAT THE FUCK YOU WANT TO.                    "
-"									     "
-"			Copyright 2019 Andre Hansen                          "
-"									     "
+"  		          0. You just DO WHAT THE FUCK YOU WANT TO.                    "
+"				                                                      					     "
+"			                  Copyright 2019 Andre Hansen                          "
+"									                                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  Plugged					"
-"			  -Minimalistic plugin manager				"
+"                                  Plugged					                            "
+"			                   -Minimalistic plugin manager                    				"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'		" Easy way to surround text with tags
@@ -267,5 +268,3 @@ inoremap $e ""<esc>i
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Check file in shellcheck, (disabled in favor of snippy)
 " map <leader>s :!clear && shellcheck %<CR>
-
-
