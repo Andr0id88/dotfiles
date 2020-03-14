@@ -29,6 +29,7 @@ antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
+antigen theme romkatv/powerlevel10k
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -189,7 +190,7 @@ bindkey '^ ' autosuggest-accept #Autosuggest-accept
 
 # ----- plugins -----
 PLUGINS_DIR=/usr/share/zsh/plugins/
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 [[ -s /home/kali/.autojump/etc/profile.d/autojump.sh ]] && source /home/kali/.autojump/etc/profile.d/autojump.sh
 eval $(thefuck --alias) # Needed for the fuck command
 zstyle :compinstall filename '/home/kali/.zshrc'
