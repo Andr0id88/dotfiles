@@ -37,21 +37,23 @@ These are my dotfiles used for my Arch Linux OS, this repo contain configs for:
 * Also other config files, for example xdg default programs, inputrc and more.
 
 #### Who is it aimed for?
-For the most part myself, but if anyone else see any use of any of this please feel free to help yourself. I am only using i3wm, so if you are a GUI person some of the config files wont be of any use to you.
+For the most part myself, but if anyone else see any use of any of this, please feel free to help yourself. I am only using i3wm, so if you are a GUI person some of the config files wont be of much use to you.
 
 ## Scripts
 There are numerous custom scripts located [here](https://github.com/Andr0id88/dotfiles/tree/master/.local/bin/tools), most of the scripts are self explanatory and contains comments.
 Some of the scripts are used for making the dmenu\rofi workflow abit more streamlined, they are all called rofi-?
 
-#### Github
+### Github
 There is also some custom github scripts called [gapush](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gapush), [gapull](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gapull) and [gastat](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gastat). These are used for looping over many subfolders from my githubrepo folder were i keep my projects for easy management.
 
 They can be used as a systemd service to have all git repo's push when you turn on the pc, and pull when you turn it on, to easily sync betwen stationary and laptop for e.g. If you use the dotfile alias to sync your dotfiles these scripts will also include that command aswell.
 
-#### Shortcuts
+### Shortcuts
 It contains 2 files called [bmdirs](https://github.com/Andr0id88/dotfiles/blob/master/.config/bmdirs) and a file called [bmfiles](https://github.com/Andr0id88/dotfiles/blob/master/.config/bmfiles).
 In these 2 files you can write down high traffic folders or files. These will automaticly sync to bashrc, zshrc, fish, ranger, vifm and more using [this](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/shortcuts) script.
 
+### Alias
+Most of the usefull aliases can be found in the [getkeys](https://github.com/Andr0id88/dotfiles/tree/master/.config/getkeys) folder, and invoked and watch from the CLI by simply typing getkeys.
 
 ## Setup Repository
 #### **Warning**: **If you want to give these dotfiles a try, you should first fork or clone this repo, review the code, and remove things you don't want or need. Don't blindly use my settings unless you know what that entails. Use at your own risk.**
