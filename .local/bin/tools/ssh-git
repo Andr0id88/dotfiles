@@ -1,0 +1,28 @@
+# NOTE this still need some work but it is useable now if you change this file directly
+# eventually this file will be able to run only from cli and user input.
+
+# Paste the text below, substituting in your GitHub email address.
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# This creates a new ssh key, using the provided email as a label.
+
+# When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location and is requried for this script to work.
+
+# Adding the ssh key to the ssh-agent:
+
+eval "$(ssh-agent -s)"
+# Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
+ssh-add ~/.ssh/id_rsa
+
+# Add the SSH key to your GitHub account.
+
+xclip -sel clip < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+
+
+# Now go to your github account and in the upper-right corner of any page, click your profile photo, then click Settings.
+# In the user settings sidebar, click SSH and GPG keys.
+
+# In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal Mac, you might call this key "Personal MacBook Air".
+
+# Paste your key into the "Key" field.
+
