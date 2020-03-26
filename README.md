@@ -176,9 +176,10 @@ equivalent `dotfiles` command.
 compdef dotfiles='git'
 ```
 
-## Insipration
+## Inspiration 💡
 
-Many of dotfiles were directly forked from:
+Some of my dotfiles were directly forked from:
 * [Luke Smith](https://github.com/lukesmithxyz)
 * [Gotbletu](https://github.com/gotbletu)
-And many others...
+
+
