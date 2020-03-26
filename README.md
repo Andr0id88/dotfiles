@@ -1,7 +1,7 @@
 # Andr0id88 dotfiles
 
 ## i3-gaps, ranger & firefox with custom interactive startpage
-![I3-gaps](/home/kali/github/dotfilesdocs/i3.png "i3-gaps")
+![I3-gaps](https://github.com/Andr0id88/kalivoidrice/blob/master/i3.png "i3-gaps")
 
 ## Tmux with powerline
 ![Tmux](/home/kali/github/dotfilesdocs/tmux.png "Tmux")
