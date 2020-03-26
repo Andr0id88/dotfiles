@@ -48,7 +48,7 @@ Some of the scripts are used for making the dmenu\rofi workflow abit more stream
 ### Github
 There is also some custom github scripts called [gapush](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gapush), [gapull](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gapull) and [gastat](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/gastat). These are used for looping over many subfolders from my githubrepo folder were i keep my projects for easy management.
 
-They can be used as a systemd service to have all git repo's push when you turn on the pc, and pull when you turn it on, to easily sync betwen stationary and laptop for e.g. If you use the dotfile alias to sync your dotfiles these scripts will also include that command aswell.
+They can be used as a systemd service to have all git repo's push when you turn off the pc, and pull when you turn it on, to easily sync betwen stationary and laptop for e.g. If you use the dotfile alias to sync your dotfiles these scripts will also include that command aswell.
 
 ### Shortcuts
 It contains 2 files called [bmdirs](https://github.com/Andr0id88/dotfiles/blob/master/.config/bmdirs) and a file called [bmfiles](https://github.com/Andr0id88/dotfiles/blob/master/.config/bmfiles).
