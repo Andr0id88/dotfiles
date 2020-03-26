@@ -4,7 +4,7 @@
 ![I3-gaps](https://github.com/Andr0id88/kalivoidrice/blob/master/i3.png "i3-gaps")
 
 ## Tmux with powerline
-![Tmux](/home/kali/github/dotfilesdocs/tmux.png "Tmux")
+![Tmux](https://github.com/Andr0id88/kalivoidrice/blob/master/tmux.png "Tmux")
 
 ## Contents
 These are my dotfiles used for my Arch Linux OS, this repo contain configs for:
