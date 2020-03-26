@@ -33,29 +33,29 @@
 "			                   -Minimalistic plugin manager                    				"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-surround'		" Easy way to surround text with tags
-Plug 'scrooloose/nerdtree'		" File explorer within vim
-Plug 'junegunn/goyo.vim'		" Centers text on the screen
-Plug 'PotatoesMaster/i3-vim-syntax'	" Enables vim syntax in i3
-Plug 'jreybert/vimagit'			" Git manager for vim
-Plug 'vimwiki/vimwiki'			" Todo list and much more
-Plug 'bling/vim-airline'		" Adds a infobar at the bottom
-Plug 'tpope/vim-commentary'		" Easy way to comment inn\out text
-Plug 'sirver/ultisnips'			" Snippets for vim
-Plug 'honza/vim-snippets'		" More snippets for vim
-Plug 'kien/ctrlp.vim'			" Fuzzy finder
-Plug 'mhinz/vim-startify'		" Startscreen for vim
-Plug 'scrooloose/syntastic'		" Syntax checker
-Plug 'mattn/emmet-vim'			" HTML creator on steroids
-Plug 'jiangmiao/auto-pairs'		" Automatically matches brackets
-Plug 'Shougo/deoplete.nvim'		" Autocompleter for vim
-Plug 'tpope/vim-repeat'			" Enables . to be used with vim-surround
-Plug 'easymotion/vim-easymotion' 	" Easier navigation just type s to activate
-Plug 'morhetz/gruvbox'			" Theme for vim\nvim
+Plug 'tpope/vim-surround'		            " Easy way to surround text with tags
+Plug 'scrooloose/nerdtree'		          " File explorer within vim
+Plug 'junegunn/goyo.vim'		            " Centers text on the screen
+Plug 'PotatoesMaster/i3-vim-syntax'	    " Enables vim syntax in i3
+Plug 'jreybert/vimagit'			            " Git manager for vim
+Plug 'vimwiki/vimwiki'			            " Todo list and much more
+Plug 'bling/vim-airline'		            " Adds a infobar at the bottom
+Plug 'tpope/vim-commentary'		          " Easy way to comment inn\out text
+Plug 'sirver/ultisnips'			            " Snippets for vim
+Plug 'honza/vim-snippets'		            " More snippets for vim
+Plug 'kien/ctrlp.vim'			              " Fuzzy finder
+Plug 'mhinz/vim-startify'		            " Startscreen for vim
+Plug 'scrooloose/syntastic'		          " Syntax checker
+Plug 'mattn/emmet-vim'			            " HTML creator on steroids
+Plug 'jiangmiao/auto-pairs'		          " Automatically matches brackets
+Plug 'Shougo/deoplete.nvim'		          " Autocompleter for vim
+Plug 'tpope/vim-repeat'			            " Enables . to be used with vim-surround
+Plug 'easymotion/vim-easymotion' 	      " Easier navigation just type s to activate
+Plug 'morhetz/gruvbox'			            " Theme for vim\nvim
 Plug 'ryanoasis/vim-devicons'           " Iconpack for nvim
 Plug 'dbeniamine/cheat.sh-vim'          " Cheatcheat in vim, hoover over word and press leader + KB to activate
-Plug 'kovetskiy/sxhkd'			" Syntax and indent for sxhkd cfg
-
+Plug 'kovetskiy/sxhkd'			            " Syntax and indent for sxhkd cfg
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
 
