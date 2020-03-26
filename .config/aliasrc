@@ -107,6 +107,12 @@ fd() {
   cd "$dir"
 }
 
+# Open output of a command in nvim
+vo() {
+[ -z "$1" ] && exit
+"$*" | nvim -
+}
+
 #Search for songs on youtube, only play audio
 yl() { youtube-viewer -n $@ ;}
 

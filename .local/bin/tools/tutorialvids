@@ -1,6 +1,24 @@
 #!/bin/sh
+
+#######################################################################
+#                               Author                                #
+#######################################################################
+#					    						 _       ___  _     _  ___   ___            #
+# 		     /\             | |     / _ \(_)   | |/ _ \ / _ \           #
+#         /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |          #
+#        / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <           #
+#       / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |          #
+#      /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/           #
+#                                                                     #
+#######################################################################
+# File: tutorialvids
+# Created: 02/22/19
+# Last Modified: 2020-03-26
+
+# Description:
 # Use this script along side with rofi-bang script to easliy have access to tutorial vids for diffrent stuff
 # To add a video just add a name *tab* then the url of the video, the video will open in mpv
+
 vidlist="
 status bar	https://www.youtube.com/watch?v=gKumet6b-WY
 sxiv (image viewer)	https://www.youtube.com/watch?v=GYW9i_u5PYs

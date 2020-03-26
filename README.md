@@ -39,8 +39,8 @@ These are my dotfiles used for my Arch Linux OS, this repo contain configs for:
 #### Who is it aimed for?
 For the most part myself, but if anyone else see any use of any of this, please feel free to help yourself. I am only using i3wm, so if you are a GUI person some of the config files wont be of much use to you.
 
-## Scripts
-There are numerous custom scripts located [here](https://github.com/Andr0id88/dotfiles/tree/master/.local/bin/tools), most of the scripts are self explanatory and contains comments.
+### Scripts
+There are numerous custom scripts located [here](https://github.com/Andr0id88/dotfiles/tree/master/.local/bin/tools), most of the scripts are self explanatory and contains comments for further explanations.
 Some of the scripts are used for making the dmenu\rofi workflow abit more streamlined, they are all called rofi-?
 
 ### Github
@@ -53,7 +53,10 @@ It contains 2 files called [bmdirs](https://github.com/Andr0id88/dotfiles/blob/m
 In these 2 files you can write down high traffic folders or files. These will automaticly sync to bashrc, zshrc, fish, ranger, vifm and more using [this](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/shortcuts) script.
 
 ### Alias
-Most of the usefull aliases can be found in the [getkeys](https://github.com/Andr0id88/dotfiles/tree/master/.config/getkeys) folder, and invoked and watch from the CLI by simply typing getkeys.
+Most of the usefull aliases can be found in the [getkeys](https://github.com/Andr0id88/dotfiles/tree/master/.config/getkeys) folder, and invoked and watched from the CLI by simply typing getkeys. There are also built in [cheatsheets](https://github.com/Andr0id88/dotfiles/tree/master/.config/getvimkeys) for vim plugins that also can be invoked from the cli with the command getvimkeys.
+
+### Custom startpage
+There is also a [dockerfile script](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/hpage) that starts a local web-server with a [Tilde Enhanced](https://github.com/Andr0id88/devops/tree/master/docker/homepage/website) website. I did this to be able to have my own *new tab* custom page, due to the fact that you cant change tab page in firefox.
 
 ## Setup Repository
 #### **Warning**: **If you want to give these dotfiles a try, you should first fork or clone this repo, review the code, and remove things you don't want or need. Don't blindly use my settings unless you know what that entails. Use at your own risk.**
@@ -159,7 +162,7 @@ dotfiles() {
             fi
             ;;
         *)
-            /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+            /usr/bin/env git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
             ;;
     esac
 }
