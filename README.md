@@ -1,12 +1,25 @@
 # Andr0id88 dotfiles
 
-## i3-gaps, ranger & firefox with custom interactive startpage
+
+## Table of Contents
+
++ [Screenshots](#screenshots)
++ [Introduction](#introduction)
++ [Scripts](#Scripts)
++ [Files](#track-files)
++ [Setup Repository](#setup-repository)
++ [Restore Configurations](#restore-configurations)
++ [Additional Commands](#additional-commands)
+
+## Screenshots
+### i3-gaps, ranger & firefox with custom interactive startpage
 ![I3-gaps](https://github.com/Andr0id88/kalivoidrice/blob/master/i3.png "i3-gaps")
 
-## Tmux with powerline
+### Tmux with powerline
 ![Tmux](https://github.com/Andr0id88/kalivoidrice/blob/master/tmux.png "Tmux")
 
-## Contents
+
+## Introduction
 These are my dotfiles used for my Arch Linux OS, this repo contain configs for:
 
 * htop (prosess inspector tool)
@@ -23,6 +36,8 @@ These are my dotfiles used for my Arch Linux OS, this repo contain configs for:
 * zsh (shell)
 * Also other config files, for example xdg default programs, inputrc and more.
 
+#### Who is it aimed for?
+For the most part myself, but if anyone else see any use of any of this please feel free to help yourself. I am only using i3wm, so if you are a GUI person some of the config files wont be of any use to you.
 
 ## Scripts:
 There are numerous custom scripts located [here](https://github.com/Andr0id88/dotfiles/tree/master/.local/bin/tools), most of the scripts are self explanatory and contains comments.
@@ -38,10 +53,8 @@ It contains 2 files called [bmdirs](https://github.com/Andr0id88/dotfiles/blob/m
 In these 2 files you can write down high traffic folders or files. These will automaticly sync to bashrc, zshrc, fish, ranger, vifm and more using [this](https://github.com/Andr0id88/dotfiles/blob/master/.local/bin/tools/shortcuts) script.
 
 
-#### Who is it aimed for?
-For the most part myself, but if anyone else see any use of any of this please feel free to help yourself. I am only using i3wm, so if you are a GUI person some of the config files wont be of any use to you.
 
-## Installation
+## Setup Repository
 #### **Warning**:
 If you want to give these dotfiles a try, you should first fork or clone this repo, review the code, and remove things you don't want or need. Don't blindly use my settings unless you know what that entails. Use at your own risk.
 
