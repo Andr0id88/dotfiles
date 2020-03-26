@@ -133,6 +133,18 @@ yl() { youtube-viewer -n $@ ;}
 #   cd "$1"
 # }
 
+# Runs yt dl on all files listed line by line in a file
+# Downloads them in a movie format.
+yt-file() {
+cat $1 | xargs -n1 youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'
+}
+
+# Runs yt dl on all files listed line by line in a file
+# Downloads them in a audio format
+yta-file() {
+cat $1 | xargs -n1 youtube-dl -x -f bestaudio/best
+}
+
 # Source all configs
 function rld-all(){
 source ~/.bashrc
