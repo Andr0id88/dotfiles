@@ -10,6 +10,7 @@
 + [Files](#track-files)
 + [Restore Configurations](#restore-configurations)
 + [Additional Commands](#additional-commands)
++ [Insipration](#inspiration)
 
 ## Screenshots
 ### i3-gaps, ranger & firefox with custom interactive startpage
@@ -174,3 +175,10 @@ equivalent `dotfiles` command.
 ```bash
 compdef dotfiles='git'
 ```
+
+## Insipration
+
+Many of dotfiles were directly forked from:
+* [Luke Smith](https://github.com/lukesmithxyz)
+* [Gotbletu](https://github.com/gotbletu)
+And many others...
