@@ -1,36 +1,37 @@
 #!/usr/bin/bash
 
-#" ____  __.      .__  .__
-#"|    |/ _|____  |  | |__|__  ______.__.________
-#"|      < \__  \ |  | |  \  \/  <   |  |\___   /
-#"|    |  \ / __ \|  |_|  |>    < \___  | /    /
-#"|____|__ (____  /____/__/__/\_ \/ ____|/_____ \
-#"        \/    \/              \/\/           \/
+# ____  __.      .__  .__
+#|    |/ _|____  |  | |__|__  ______.__.________
+#|      < \__  \ |  | |  \  \/  <   |  |\___   /
+#|    |  \ / __ \|  |_|  |>    < \___  | /    /
+#|____|__ (____  /____/__/__/\_ \/ ____|/_____ \
+#        \/    \/              \/\/           \/
 
-#" File: files.sh
-#" Author: Andre Hansen
-#" Description: Script that shows file size and number of files in a folder.
+# File: files.sh
+# Author: Andre Hansen
+# Description: Script that shows file size and number of files in a folder.
 # It takes a few parameters [-l location] [-e extension] [--extension extension] [-h] [--help] [-s] [--stats]
-#" Last Modified: 2019-10-06
+# Last Modified: 2019-10-06
 
 
-#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-#"                                  LICENSE                                   "
-#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-#"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE               "
-#"									     "
-#"	Everyone is permitted to copy and distribute verbatim or modified    "
-#" 	copies of this license document, and changing it is allowed as long  "
-#" 			as the name is changed.                              "
-#"                                                                           "
-#" 		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE		     "
-#"	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION      "
-#"                                                                           "
-#"  		0. You just DO WHAT THE FUCK YOU WANT TO.                    "
-#"									     "
-#"			Copyright 2019 Andre Hansen                          "
-#"									     "
-#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# "                                  LICENSE                                   "
+# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#                  DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                 "
+# 									                                                           "
+# 	    Everyone is permitted to copy and distribute verbatim or modified      "
+#  	 copies of this license document, and changing it is allowed as long       "
+#  	                     		as the name is changed.                            "
+#                                                                              "
+#  		        DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE		                   "
+# 	    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION        "
+#                                                                              "
+#   		        0. You just DO WHAT THE FUCK YOU WANT TO.                      "
+# 									                                                           "
+# 		                	Copyright 2019 Andre Hansen                            "
+# 									                                                           "
+# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 function usage() {
   echo "USAGE: $0 [-l location] [-eextension] [--extension extension] [-h] [--help] [-s] [--stats]"

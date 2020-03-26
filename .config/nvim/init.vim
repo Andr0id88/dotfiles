@@ -225,6 +225,10 @@ map <Leader><Leader>e <Plug>(easymotion-e)
 map <Leader><Leader>t <Plug>(easymotion-t)
 map <Leader><Leader>T <Plug>(easymotion-T)
 
+""""""""""""""""""""""
+"  Markdown-Preview  "
+""""""""""""""""""""""
+let g:mkdp_auto_start = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Bibliography                                "
