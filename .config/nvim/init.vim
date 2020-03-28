@@ -44,6 +44,7 @@ Plug 'morhetz/gruvbox'			            " Theme for vim\nvim
 Plug 'ryanoasis/vim-devicons'           " Iconpack for nvim
 Plug 'dbeniamine/cheat.sh-vim'          " Cheatcheat in vim, hoover over word and press leader + KB to activate
 Plug 'kovetskiy/sxhkd'			            " Syntax and indent for sxhkd cfg
+Plug 'godlygeek/tabular'                " Easily allign text with regular expressions
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 

@@ -5,24 +5,33 @@
 |___/_/\_\_| \_/
 
 sxiv is the image viewer.
-	h/j/k/l - Pan image
-	-/+ - Zoom out/in
-	Enter - Toggle thumbnail mode
-	f - Fullscreen
-	n/p - Previous/next image in list/directory
-	r - Reload image if changed
-	m - Mark/unmark image
-	w - Zoom to fit window
 
-  ctrl-x     - Run external command located in ~/.config/sxiv/exec/key-handler
+-----------------------------------------------------------------------
+-                           Basic Commands                            -
+-----------------------------------------------------------------------
 
-  ctrl-x + w - Set picture as wallpaper
-  ctrl-x + c - Copy picture to a directory in bmdirs
-  ctrl-x + m - Moves picture to a directory in bmdirs
-  ctrl-x + r - Rotate a picture 90 degrees
-  ctrl-x + R - Rotate a picture -90 degrees
-  ctrl-x + f - Flop the picture
-  ctrl-x + y - Yanks,copys the image to clipboard
-  ctrl-x + Y - Yank, copys the image location to clipboard
-  ctrl-x + d - Delete image
-  ctrl-x + g - Open image in Gimp.
+h/j/k/l    # Pan image
+-/+        # Zoom out/in
+Enter      # Toggle thumbnail mode
+f          # Fullscreen
+n/p        # Previous/next image in list/directory
+r          # Reload image if changed
+m          # Mark/unmark image
+w          # Zoom to fit window
+
+
+-----------------------------------------------------------------------
+-                          Scripted commands                          -
+-----------------------------------------------------------------------
+ctrl-x     # Run external command located in ~/.config/sxiv/exec/key-handler
+
+ctrl-x + w # Set picture as wallpaper
+ctrl-x + c # Copy picture to a directory in bmdirs
+ctrl-x + m # Moves picture to a directory in bmdirs
+ctrl-x + r # Rotate a picture 90 degrees
+ctrl-x + R # Rotate a picture -90 degrees
+ctrl-x + f # Flop the picture
+ctrl-x + y # Yanks,copys the image to clipboard
+ctrl-x + Y # Yank, copys the image location to clipboard
+ctrl-x + d # Delete image
+ctrl-x + g # Open image in Gimp.
