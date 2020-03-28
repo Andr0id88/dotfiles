@@ -1,0 +1,81 @@
+#!/usr/bin/expect -f
+
+
+#######################################################################
+#                               Author                                #
+#######################################################################
+#					    						 _       ___  _     _  ___   ___            #
+# 		     /\             | |     / _ \(_)   | |/ _ \ / _ \           #
+#         /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |          #
+#        / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <           #
+#       / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |          #
+#      /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/           #
+#                                                                     #
+#######################################################################
+# File: btc
+# Created: 03/27/20
+# Last Modified: 2020-03-27
+
+# Description: Script to reconnect my bluetooth headset, e.g:
+# $ /path/to/script.sh 00:00:00:00:00  # replace 00:00:00:00:00 with the device mac address
+
+# NOTE: still in test phase
+
+set prompt "#"
+set address [lindex $argv 0]
+
+spawn bluetoothctl
+expect -re $prompt
+send "remove $address\r"
+sleep 1
+expect -re $prompt
+send "scan on\r"
+send_user "\nSleeping\r"
+sleep 5
+send_user "\nDone sleeping\r"
+send "scan off\r"
+expect "Controller"
+send "trust $address\r"
+sleep 2
+send "pair $address\r"
+sleep 2
+send "0000\r"
+sleep 3
+send_user "\nShould be paired now.\r"
+send "quit\r"
+expect eof
+
+
+#Output last test run
+
+#╰ ./btc 38:F3:2E:76:3B:37                       0.01s      11:23 
+#spawn bluetoothctl
+#Agent registered
+#[CHG] Controller 00:15:83:80:39:05 Pairable: yes
+#[bluetooth]# remove 38:F3:2E:76:3B:37
+#[DEL] Device 38:F3:2E:76:3B:37 Crusher Wireless
+#Device has been removed
+#[bluetooth]#
+#Sleeping
+#Done sleeping
+#scan onbe paired now.
+#Discovery started
+#[CHG] Controller 00:15:83:80:39:05 Discovering: yes
+#[bluetooth]# scan off
+#[bluetooth]# trust 38:F3:2E:76:3B:37
+#Device 38:F3:2E:76:3B:37 not available
+#Discovery stopped
+#[CHG] Controller 00:15:83:80:39:05 Discovering: no
+#[bluetooth]# pair 38:F3:2E:76:3B:37
+#Device 38:F3:2E:76:3B:37 not available
+#[bluetooth]# 0000
+#Invalid command in menu main: 0000
+
+#Use "help" for a list of available commands in a menu.
+#Use "menu <submenu>" if you want to enter any submenu.
+#Use "back" if you want to return to menu main.
+#[bluetooth]# quit
+#invalid command name "run"
+#    while executing
+#"run the script like so:"
+#    (file "./btc" line 26)

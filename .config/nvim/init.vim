@@ -1,31 +1,20 @@
-" ____  __.      .__  .__
-"|    |/ _|____  |  | |__|__  ______.__.________
-"|      < \__  \ |  | |  \  \/  <   |  |\___   /
-"|    |  \ / __ \|  |_|  |>    < \___  | /    /
-"|____|__ (____  /____/__/__/\_ \/ ____|/_____ \
-"        \/    \/              \/\/           \/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Vimrc-Init                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"					    						_       ___  _     _  ___   ___
+"		      /\             | |     / _ \(_)   | |/ _ \ / _ \
+"        /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |
+"       / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <
+"      / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |
+"     /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/
 
-" File: init.vim
-" Author: Andre Hansen
-" Description:
-" Last Modified: mars 23, 2019
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  LICENSE                                   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                "
-"       Everyone is permitted to copy and distribute verbatim or modified    "
-" 	    copies of this license document, and changing it is allowed as long  "
-" 			                as the name is changed.                              "
-"                                                                            "
-" 		             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE		           "
-"	      TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION      "
-"                                                                            "
-"  		          0. You just DO WHAT THE FUCK YOU WANT TO.                    "
-"				                                                      					     "
-"			                  Copyright 2019 Andre Hansen                          "
-"									                                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File: init
+" Created: A long long time ago, in a galaxy far far away...
+" Last Modified: 2020-03-28
+
+" Description: Vim settings, i use them for Nvim but they work for
+" normal vim aswell.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
