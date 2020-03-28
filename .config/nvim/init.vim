@@ -45,6 +45,7 @@ Plug 'ryanoasis/vim-devicons'           " Iconpack for nvim
 Plug 'dbeniamine/cheat.sh-vim'          " Cheatcheat in vim, hoover over word and press leader + KB to activate
 Plug 'kovetskiy/sxhkd'			            " Syntax and indent for sxhkd cfg
 Plug 'godlygeek/tabular'                " Easily allign text with regular expressions
+Plug 'machakann/vim-highlightedyank'    " Visualize what text has been yanked after a yank cmd
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
@@ -140,7 +141,8 @@ map <leader>o :setlocal spell! spelllang=en_us<CR>
 " Opens up snippets folder and lets you tab trough the files:i
 nnoremap <leader>s :r ~/.snippy/
 
-
+" Live preview of search and replace command
+set inccommand=nosplit
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Plugins                                   "
