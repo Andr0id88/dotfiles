@@ -30,6 +30,7 @@ mkdir -p $HOME/github/{external,myrepos}
 
 mkdir -p $HOME/Videos/{tutorials,series,movies}
 
+mkdir -p $HOME/Pictures/{wallpaper,people,logo,meme}
+
 mkdir $HOME/Music $HOME/sourcecode
 
-mkdir $HOME/Pictures/{wallpaper,people,logo,meme}
