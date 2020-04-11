@@ -153,12 +153,6 @@ dl-web() {
 wget --random-wait -r -p -e robots=off -U mozilla $1
 }
 
-# Simulates typing some text into the terminal
-# Usefullness 1\10, but fun.
-simtyping() {
-echo "$@" | pv -qL 10
-}
-
 # Source all configs
 function rld-all(){
 source ~/.bashrc

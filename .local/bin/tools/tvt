@@ -13,11 +13,11 @@
 #                                                                     #
 #######################################################################
 # File: mks
-# Created:04/10/20
+# Created:04/11/20
 # Last Modified: 2020-03-26
 
 # Description:
-# Test script to create a simple CLI interface for 1337x
+#Another test script
 
 
 # thisfile="$0"
@@ -35,38 +35,56 @@
 # 	echo -e "Current client settings: $program [magnet link]"
 # }
 
-site="https://1337x.to"
+# site="https://1337x.to"
 
-transadd() {
-pgrep -x transmission-da || (transmission-daemon && notify-send "Starting transmission daemon..." && sleep 3 && pkill -RTMIN+7 i3blocks)
+# transadd() {
+# pgrep -x transmission-da || (transmission-daemon && notify-send "Starting transmission daemon..." && sleep 3 && pkill -RTMIN+7 i3blocks)
 
-transmission-remote -a "$@" && notify-send "🔽 Torrent added ☑"
-}
+# transmission-remote -a "$@" && notify-send "🔽 Torrent added ☑"
+# }
 
-echo "Please type the name of the torrent you are searching for..."
-read query
+# echo "Please type the name of the torrent you are searching for..."
+# read query
 
-
+# qry="$(curl --silent $site/search/"$query"/1/ 2>/dev/null)"
+# torrent=$("$qry" | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
+# echo $torrent
 # If not searching, show top torrents
 # if [ -z "$q" ] ; then
 #   url="trending"
 
-my_array=()
-while IFS= read -r line; do
-    my_array+=( "$line" )
-  done< <(curl $site/search/"$query"/1/ | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
+# my_array=()
+# while IFS= read -r line; do
+#     my_array+=( "$line" )
+#   done< <($qry | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
 
-printf "\n\n"
+# printf "\n\n"
 
 
-printf "\n\n"
+# printf "\n\n"
 
-select num in "${my_array[@]}"
-do
-  echo $site$num
-  curl $site$num | grep -Eo '"magnet:.*"' | awk '{print $1}' | sed -e '2d' | sed 's/tr=.*//' | sed 's/$/"/' > testfile
-done
+# select num in "${my_array[@]}"
+# do
+#   echo $site$num
+#   curl $site$num | grep -Eo '"magnet:.*"' | awk '{print $1}' | sed -e '2d' | sed 's/tr=.*//' | sed 's/$/"/' > testfile
+# done
 
 # Only thing left to do here is to make the output of the last curl command be usable for the transadd function...
 # And ofc make things prettier with seed\leech counts etc...
+
+
+torrent=()
+while IFS= read -r line; do
+    torrent+=( "$line" )
+done< <(curl $site/search/"game"/1/ --silent | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
+
+seeds=()
+while IFS= read -r line; do
+    seeds+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-2' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Seeds: "$0}')
+
+leechers=()
+while IFS= read -r line; do
+    leechers+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-3' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Leechers: "$0}')
 

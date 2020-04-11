@@ -1,0 +1,77 @@
+#!/bin/bash
+
+
+#######################################################################
+#                               Author                                #
+#######################################################################
+#					    						 _       ___  _     _  ___   ___            #
+# 		     /\             | |     / _ \(_)   | |/ _ \ / _ \           #
+#         /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |          #
+#        / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <           #
+#       / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |          #
+#      /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/           #
+#                                                                     #
+#######################################################################
+# File: mks
+# Created:04/11/20
+# Last Modified: 2020-03-26
+
+# Description:
+
+
+printhelp() {
+	echo -e "Usage:"
+	echo -e "\t$thisfile [options] search query"
+	echo
+	echo
+	echo -e "Available options:"
+	echo -e "\t-h\t\tShow help"
+	echo -e "\t-n [num]\tShow only first N results (default 15; max 100 [top] or 30 [search])"
+	echo -e "\t-C\t\tDo not use colors"
+	echo -e "\t-P [prog]\tSet torrent client command (\`-P torrent-client\` OR \`-P \"torrent-client --options\"\`)"
+	echo
+	echo -e "Current client settings: $program [magnet link]"
+}
+
+
+# script cmdline option handling
+while getopts :hn:CP:: opt ; do
+	case "$opt" in
+		h) printhelp; exit 0;;
+		n) limit="$OPTARG";;
+		C) unset numbcolor namecolor sizecolor seedcolor peercolor nonecolor errocolor mesgcolor;;
+		P) program="$OPTARG"; chex;;
+		*) echo -e "Unknown option(s)."; printhelp; exit 1;;
+	esac
+done
+
+site="https://1337x.to"
+
+echo "Please type the name of the torrent you are searching for..."
+read query
+
+torrent=()
+while IFS= read -r line; do
+    torrent+=( "$line" )
+done< <(curl $site/search/"$query"/1/ --silent | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
+
+seeds=()
+while IFS= read -r line; do
+    seeds+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-2' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Seeds: "$0}')
+
+leechers=()
+while IFS= read -r line; do
+    leechers+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-3' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Leechers: "$0}')
+
+select num in "${torrent[@]}"
+do
+  echo "Here is some information on the torrent: "
+  echo $torrent
+  echo $seeds
+  echo $leechers
+
+  echo "Do you want to download it"
+  curl $site$num --silent | grep -Eo '"magnet:.*"' | awk '{print $1}' | sed -e '2d' | sed 's/tr=.*//' | sed 's/$/"/' >> testfile && printf "\n" >> testfile
+done

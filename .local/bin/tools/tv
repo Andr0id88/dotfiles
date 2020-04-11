@@ -1,0 +1,124 @@
+#!/bin/bash
+
+
+#######################################################################
+#                               Author                                #
+#######################################################################
+#					    						 _       ___  _     _  ___   ___            #
+# 		     /\             | |     / _ \(_)   | |/ _ \ / _ \           #
+#         /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |          #
+#        / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <           #
+#       / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |          #
+#      /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/           #
+#                                                                     #
+#######################################################################
+# File: mks
+# Created:04/11/20
+# Last Modified: 2020-03-26
+
+# Description:
+# testscript for 1337
+# Single seed and leecher + torrents are working...
+# Needs to curl once and then split up output for diffrent stats, seeds etc...
+
+printhelp() {
+	echo -e "Usage:"
+	echo -e "\t$thisfile [options] search query"
+	echo
+	echo
+	echo -e "Available options:"
+	echo -e "\t-h\t\tShow help"
+	echo -e "\t-n [num]\tShow only first N results (default 15; max 100 [top] or 30 [search])"
+	echo -e "\t-C\t\tDo not use colors"
+	echo -e "\t-P [prog]\tSet torrent client command (\`-P torrent-client\` OR \`-P \"torrent-client --options\"\`)"
+	echo
+	echo -e "Current client settings: $program [magnet link]"
+}
+
+
+# script cmdline option handling
+while getopts :hn:CP:: opt ; do
+	case "$opt" in
+		h) printhelp; exit 0;;
+		n) limit="$OPTARG";;
+		C) unset numbcolor namecolor sizecolor seedcolor peercolor nonecolor errocolor mesgcolor;;
+		P) program="$OPTARG"; chex;;
+		*) echo -e "Unknown option(s)."; printhelp; exit 1;;
+	esac
+done
+
+site="https://1337x.to"
+
+echo "Please type the name of the torrent you are searching for..."
+read query
+transadd()
+{
+pgrep -x transmission-da || (transmission-daemon && notify-send "Starting transmission daemon..." && sleep 3 && pkill -RTMIN+7 i3blocks)
+
+transmission-remote -a "$@" && notify-send "🔽 Torrent added ☑"
+}
+
+# IDEA FOR TOMMOROW:
+
+# Make one torrent called curled, and make this function just do a simple (curl $site/search/"$query"/1/ etc...
+# Then other functions can reuse this 1 curl instead of having to "recurl" everything 3 times
+
+# Also it would be nice to have a function with a cleaner name than the /torrent name i use currently...
+# To do this i need to filter out the text from the <a href /> and the </a> + rest of the text after..
+# There is an example of the curled output on line 45!
+
+torrent=()
+while IFS= read -r line; do
+    torrent+=( "$line" )
+done< <(curl $site/search/"$query"/1/ --silent | grep -Eo '\/torrent\/.*"' | sed 's/".*//')
+
+seeds=()
+while IFS= read -r line; do
+    seeds+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-2' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Seeds: "$0}')
+
+leechers=()
+while IFS= read -r line; do
+    leechers+=( "$line" )
+  done< <(curl $site/search/"$query"/1/ --silent | grep '<td class="coll-3' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Leechers: "$0}')
+
+select num in "${torrent[@]}"
+do
+  echo "Here is some information on the torrent: "
+  echo $torrent
+  echo $seeds
+  echo $leechers
+
+  echo "Do you want to download it"
+  curl $site$num --silent | grep -Eo '"magnet:.*"' | awk '{print $1}' | sed -e '2d' | sed 's/tr=.*//' | sed 's/$/"/' | xargs transadd
+done
+
+# This is a way to get the number of seeds for a torrent.
+# curl $site/search/"$query"/1/ | grep '<td class="coll-2' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Seeds: "$0}'  > testfile
+
+# This is a way to get the number of leechers for a torrent.
+# curl $site/search/"$query"/1/ | grep '<td class="coll-3' | awk {'print $3'} | sed 's/[^0-9]//g' | awk '{print "Leechers: "$0}' > testfile
+
+# This is a way to get the size of a torrent
+# curl $site/search/"$query"/1/ | grep '<td class="coll-4' | awk {'print $4 $5'} | sed 's/[a-z]//g' | sed 's/[-"><"]//g' | awk '{print "Size: "$0}' > testfile
+
+# curl $site/search/"$query"/1/ | grep '<td class="coll-5' | awk {'print $4'} | cut  > testfile
+
+
+# | sed 's/[^0-9]//g'
+
+# Print something at the beginning of a line:
+# awk '{print "Seeds: "$0}'
+
+# <td class="coll-1 name"><a href="/sub/41/0/" class="icon"><i class="flaticon-hd"></i></a><a href="/torrent/3769746/Game-of-Thrones-S08E06-720p-WEB-H264-MEMENTO-eztv/">Game of Thrones S08E06 720p WEB H264-MEMENTO [eztv]</a><span class="comments"><i class="flaticon-message"></i>1</span></td>
+# <td class="coll-2 seeds">42838</td>
+# <td class="coll-3 leeches">4357</td>
+# <td class="coll-date">May. 20th '19</td>
+# <td class="coll-4 size mob-uploader">1.9 GB<span class="seeds">42838</span></td>
+# <td class="coll-5 uploader"><a href="/user/EZTVag/">EZTVag</a></td>
+# <td class="coll-1 name"><a href="/sub/75/0/" class="icon"><i class="flaticon-h264"></i></a><a href="/torrent/3769739/Game-of-Thrones-S08E06-WEB-H264-MEMENTO/">Game.of.Thrones.S08E06.WEB.H264-MEMENTO</a><span class="comments"><i class="flaticon-message"></i>5</span></td>
+# <td class="coll-2 seeds">16575</td>
+# <td class="coll-3 leeches">11151</td>
+# <td class="coll-date">May. 20th '19</td>
+# <td class="coll-4 size mob-vip">396.4 MB<span class="seeds">16575</span></td>
+# <td class="coll-5 vip"><a href="/user/MrStark/">MrStark</a></td>
