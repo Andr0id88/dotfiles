@@ -74,7 +74,8 @@ alias ka="killall" \
 	rld-zsh="source ~/.config/zsh/.zshrc" \
 	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
 	rld-bash="source ~/.bashrc" \
-	tmux='TERM=screen-256color tmux'
+	tmux='TERM=screen-256color tmux'\
+  wifi='nmtui'
 
 
 
@@ -116,6 +117,10 @@ fd() {
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+
+o() {xdg-open "$@" &>/dev/null}
+
+mkcd() {mkdir -p "$1"; cd "$1"}
 
 # Open output of a command in nvim
 vo() {
