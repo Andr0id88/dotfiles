@@ -163,7 +163,7 @@ let g:snips_github = "www.github.com/Andr0id88"
 """"""""""""""
 let g:AutoPairsMapCR=0
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option('enable_smart_case', 1)
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 """"""""""""""
