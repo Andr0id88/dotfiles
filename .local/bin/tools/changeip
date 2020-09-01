@@ -24,4 +24,3 @@ chdns=$(cat /etc/dhcpcd.conf | grep -e '^static domain_name_servers=' | cut -d= 
 echo "The ip has been changed to $chip"
 echo "The GW has been changed to $chgw"
 echo "The DNS server have been changed to $chdns"
-

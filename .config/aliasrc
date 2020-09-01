@@ -23,6 +23,7 @@
 #                                Alias                                #
 #######################################################################
 alias ka="killall" \
+  to="qbittorrent &" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	magit="nvim -c Magit" \
 	p="sudo pacman" \
@@ -82,6 +83,15 @@ alias ka="killall" \
 #######################################################################
 #                              Functions                              #
 #######################################################################
+vncstart() {
+x0vncserver -display :0 -passwordfile ~/.vnc/passwd
+}
+
+vncstop() {
+  out=$(pgrep vnc)
+  kill $out;
+}
+
 #fh repeat bash history commands
 fh() {
 eval $(history | fzf +s | sed 's/ *[0-9]* *//')
