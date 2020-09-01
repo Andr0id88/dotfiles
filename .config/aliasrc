@@ -86,13 +86,13 @@ alias ka="killall" \
 fh() {
 eval $(history | fzf +s | sed 's/ *[0-9]* *//')
 }
-bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
+# bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
 
 # copy working directory
-# cwa() { pwd | tr -d "\r\n" | xclip -selection clipboard }
+cwa() { pwd | tr -d "\r\n" | xclip -selection clipboard; }
 
 # Looks for articles in sci-hub and downloades them.
- # shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
+ shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
 
 # se is to search for scripts or config files, opens them up in default editor(nvim)
  se() { du -a ~/.local/bin/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
