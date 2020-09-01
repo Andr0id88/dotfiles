@@ -32,7 +32,7 @@ alias ka="killall" \
 	trc="transmission-remote-cli" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	vim="$EDITOR"\
+	vim="$EDITOR" \
 	x="sxiv -ft *" \
   hosts='sudo nvim /etc/hosts' \
 	sdn="sudo shutdown -h now" \
@@ -55,7 +55,7 @@ alias ka="killall" \
 	webserver="python -m http.server 8080" \
 	starwars="telnet towel.blinkenlights.nl" \
 	dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
-	gs="git status"\
+	gs="git status" \
 	ga="git add ." \
 	gc="git commit -m" \
 	gp="git push" \
@@ -70,10 +70,10 @@ alias ka="killall" \
 	pkglist="pacman -Qneq > ~/.pkglist.txt" \
 	aurlist="pacman -Qmeq > ~/.aurlist.txt" \
 	piplist="pip freeze > ~/.piplist.txt" \
-	rld-i3="i3-msg reload" \
-	rld-zsh="source ~/.config/zsh/.zshrc" \
-	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	rld-bash="source ~/.bashrc" \
+	# rld-i3="i3-msg reload" \
+	# rld-zsh="source ~/.config/zsh/.zshrc" \
+	# rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	# rld-bash="source ~/.bashrc" \
 	tmux='TERM=screen-256color tmux'\
   wifi='nmtui'
 
@@ -83,53 +83,51 @@ alias ka="killall" \
 #                              Functions                              #
 #######################################################################
 #fh repeat bash history commands
-fh() {
-eval $(history | fzf +s | sed 's/ *[0-9]* *//')
-}
+# fh() {
+# eval $(history | fzf +s | sed 's/ *[0-9]* *//')
+# }
 # bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
 
 # copy working directory
-cwa() { pwd | tr -d "\r\n" | xclip -selection clipboard }
+# cwa() { pwd | tr -d "\r\n" | xclip -selection clipboard }
 
-#Looks for articles in sci-hub and downloades them.
-shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
+# Looks for articles in sci-hub and downloades them.
+ # shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
 
-#se is to search for scripts or config files, opens them up in default editor(nvim)
-se() { du -a ~/.local/bin/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
+# # se is to search for scripts or config files, opens them up in default editor(nvim)
+ # se() { du -a ~/.local/bin/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
 
-vf() { fzf | xargs -r -I % $EDITOR % ;}
+ # vf() { fzf | xargs -r -I % $EDITOR % ;}
 
-fp() { du -a ~/programmering/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+ # fp() { du -a ~/programmering/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
 
-#fsr opens fzf in surfraw bookmark folder and opens the bookmark up in default browser
-fsr() { surfraw "$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n | fzf -e)" ;}
+# # fsr opens fzf in surfraw bookmark folder and opens the bookmark up in default browser
+ # fsr() { surfraw "$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n | fzf -e)" ;}
 
-#fmv takes filename after command and opens fzf to search for output location
-fmv() { mv -v "$1" "$(awk '{print $2}' ~/.config/bmdirs | fzf | sed "s|~|$HOME|")" ;}
+# # fmv takes filename after command and opens fzf to search for output location
+ # fmv() { mv -v "$1" "$(awk '{print $2}' ~/.config/bmdirs | fzf | sed "s|~|$HOME|")" ;}
 
-#fcp takes filename after command and opens fzf to search for output location
-fcp() { cp -v "$1" "$(awk '{print $2}' ~/.config/bmdirs && ~/.local/bin/tools | fzf | sed "s|~|$HOME|")" ;}
+# # fcp takes filename after command and opens fzf to search for output location
+ # fcp() { cp -v "$1" "$(awk '{print $2}' ~/.config/bmdirs && ~/.local/bin/tools | fzf | sed "s|~|$HOME|")" ;}
 
-# fd - cd to selected directory
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
+ # # fd - cd to selected directory
+ # fd() {
+ #   local dir
+ #   dir=$(find ${1:-.} -path '*/\.*' -prune \
+ #                   -o -type d -print 2> /dev/null | fzf +m) &&
+ #   cd "$dir"
+ # }
 
-o() {xdg-open "$@" &>/dev/null}
+ # mkcd() { mkdir -p "$1"; cd "$1" }
 
-mkcd() {mkdir -p "$1"; cd "$1"}
-
-# Open output of a command in nvim
-vo() {
-[ -z "$1" ] && exit 1
-"$*" | nvim -
-}
+ # # Open output of a command in nvim
+ # vo() {
+ # [ -z "$1" ] && exit 1
+ # "$*" | nvim -
+ # }
 
 #Search for songs on youtube, only play audio
-yl() { youtube-viewer -n $@ ;}
+# yl() { youtube-viewer -n $@ ; }
 
 # rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
 
@@ -142,11 +140,11 @@ yl() { youtube-viewer -n $@ ;}
 
 # Runs yt dl on all files listed line by line in a file
 # Downloads them in a movie format.
-yt-file() { cat $1 | xargs -n1 youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s' }
+# yt-file() { cat $1 | xargs -n1 youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s' }
 
 # Runs yt dl on all files listed line by line in a file
 # Downloads them in a audio format
-yta-file() { cat $1 | xargs -n1 youtube-dl -x -f bestaudio/best }
+# yta-file() { cat $1 | xargs -n1 youtube-dl -x -f bestaudio/best }
 
 # Downloads a entire website!
 # -p parameter tells wget to include all files, including images.
@@ -154,45 +152,44 @@ yta-file() { cat $1 | xargs -n1 youtube-dl -x -f bestaudio/best }
 # --random-wait to let wget chose a random number of seconds to wait, avoid get into black list.
 # Other Useful wget Parameters: --limit-rate=20k limits the rate at which it downloads files. -b continues wget after logging out.
 # -o $HOME/wget_log.txt logs the output
-dl-web() {
-wget --random-wait -r -p -e robots=off -U mozilla $1
-}
+# dl-web() {
+# wget --random-wait -r -p -e robots=off -U mozilla $1
+# }
 
-# Source all configs
-function rld-all(){
-source ~/.bashrc
-source ~/.config/zsh/.zshrc
-shortcuts >/dev/null; source ~/.config/shortcutrc
-i3-msg reload
-}
+# # Source all configs
+# function rld-all(){
+# source ~/.bashrc
+# source ~/.config/zsh/.zshrc
+# shortcuts >/dev/null; source ~/.config/shortcutrc
+# i3-msg reload
+# }
 
-function gcp() {
-commit_msg="$*"
-    git add .
-if [ -z "$commit_msg" ]
-  then
-    git commit -a -m "Uploaded by script, no commit msg added"
-else
-    git commit -a -m $commit_msg
-fi
-    git push
-}
+# function gcp() {
+# commit_msg="$*"
+#     git add .
+# if [ -z "$commit_msg" ]
+#   then
+#     git commit -a -m "Uploaded by script, no commit msg added"
+# else
+#     git commit -a -m $commit_msg
+# fi
+#     git push
+# }
 
-function dcp() {
-commit_msg="$*"
-    dotfiles add -u
-if [ -z "$commit_msg" ]
-  then
-    dotfiles commit -a -m "Uploaded by script, no commit msg added"
-else
-    dotfiles commit -a -m $commit_msg
-fi
-    dotfiles push
-}
+# function dcp() {
+# commit_msg="$*"
+#     dotfiles add -u
+# if [ -z "$commit_msg" ]
+#   then
+#     dotfiles commit -a -m "Uploaded by script, no commit msg added"
+# else
+#     dotfiles commit -a -m $commit_msg
+# fi
+#     dotfiles push
+# }
 # Function to write out all installed packages from AUR,PIP and pacman
-function allpkgs(){
-	pacman -Qneq > ~/Documents/pkglist/pkglist.txt
-	pacman -Qmeq > ~/Documents/pkglist/aurlist.txt
-	pip freeze > ~/Documents/pkglist/piplist.txt
-}
-
+# function allpkgs(){
+# 	pacman -Qneq > ~/Documents/pkglist/pkglist.txt
+# 	pacman -Qmeq > ~/Documents/pkglist/aurlist.txt
+# 	pip freeze > ~/Documents/pkglist/piplist.txt
+# }
