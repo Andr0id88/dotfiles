@@ -220,7 +220,8 @@ map <Leader><Leader>T <Plug>(easymotion-T)
 """"""""""""""""""""""
 "  Markdown-Preview  "
 """"""""""""""""""""""
-let g:mkdp_auto_start = 1
+" Set this to 1 to auto preview markdown files
+let g:mkdp_auto_start = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Bibliography                                "
@@ -250,17 +251,17 @@ vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
 
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                TempDisabled                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Check file in shellcheck, (disabled in favor of snippy)
 " map <leader>s :!clear && shellcheck %<CR>
+
+" Map auto complete of (, ", ', [
+" inoremap $1 ()<esc>i
+" inoremap $2 []<esc>i
+" inoremap $3 {}<esc>i
+" inoremap $4 {<esc>o}<esc>O
+" inoremap $q ''<esc>i
+" inoremap $e ""<esc>i
