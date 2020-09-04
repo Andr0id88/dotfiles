@@ -29,7 +29,8 @@ super + shift + w
 	$BROWSER
 super + shift + g
 	gimp
-
+super + shift + t
+  transmission-remote-cli
 # Et cetera...
 super + grave
 	dmenuunicode
