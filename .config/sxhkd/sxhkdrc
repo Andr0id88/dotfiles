@@ -26,7 +26,7 @@ super + shift + e
 super + w
 	rofi -show window
 super + shift + w
-	$BROWSER
+	firejail $BROWSER
 super + shift + g
 	gimp
 super + shift + t
