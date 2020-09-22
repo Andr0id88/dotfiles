@@ -31,6 +31,7 @@ alias ka="killall" \
 	f="vifm" \
 	g="git" \
 	trc="transmission-remote-cli" \
+  tsm="transmission-remote" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	vim="$EDITOR" \
