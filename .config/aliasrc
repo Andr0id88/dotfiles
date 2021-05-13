@@ -77,16 +77,55 @@ alias ka="killall" \
 	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
 	rld-bash="source ~/.bashrc" \
 	tmux='TERM=screen-256color tmux'\
+	t='TERM=screen-256color tmux'\
+	tmuxl="tmux list-sessions" \
+	tmuxa="tmux attach-session -t $1" \
   wifi='nmtui' \
   mscreen="xrandr --output DP-1-2 --mode 1920x1080 --output HDMI-2 --mode 1920x1080 --left-of DP-1-2 --output DP-1-3 --mode 1920x1080 --right-of DP-1-2" \
   awx="firefox -new-window http://127.0.0.1/#/login" \
-  cockpit="firefox -new-window http://127.0.0.1:9090"
+  cockpit="firefox -new-window http://127.0.0.1:9090" \
+  fdiff="git status -s  | fzf --no-sort --reverse --preview 'git diff --color=always {+2} | diff-so-fancy' --bind=ctrl-j:preview-down --bind=ctrl-k:preview-up --preview-window=right:60%:wrap" \
 
 
 
 #######################################################################
 #                              Functions                              #
 #######################################################################
+# ga="git add ." \
+# Find and logon to server in serverlist
+fs(){
+  host=$(/bin/cat ~/Documents/serverlists/* | fzf -m)
+  xpanes --ssh $host
+}
+
+# Find IP for a FQDN
+fip(){
+  host=$(/bin/cat ~/Documents/serverlists/* | fzf -m)
+  host $host
+}
+
+# fbr - checkout git branch
+fbr() {
+
+  local branches branch
+
+  branches=$(git branch) &&
+
+  branch=$(echo "$branches" | fzf-tmux -h 15 +m) &&
+
+  git checkout $(echo "$branch" | sed "s/.* //")
+
+}
+
+findf() {
+nvim $(rg $1 | fzf)
+}
+
+function atest() {
+cd ~/repo/ansible-repo
+ansible-playbook -b -K -u install preconfig.yml --ask-pass
+}
+
 vncstart() {
 x0vncserver -display :0 -passwordfile ~/.vnc/passwd
 }
@@ -131,6 +170,34 @@ cwa() { pwd | tr -d "\r\n" | xclip -selection clipboard; }
                     -o -type d -print 2> /dev/null | fzf +m) &&
     cd "$dir"
   }
+
+fdh() {
+  local dir
+  dir=$(find ${1:-~/} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+ft() {
+	local -r fmt='#{session_id}:|#S|(#{session_attached} attached)'
+	{ tmux display-message -p -F "$fmt" && tmux list-sessions -F "$fmt"; } \
+		| awk '!seen[$1]++' \
+		| column -t -s'|' \
+		| fzf -q '$' --reverse --prompt 'switch session: ' -1 \
+		| cut -d':' -f1 \
+    | sed 's/.//' \
+		| xargs tmux attach-session -t $1
+}
+
+# Find file and open it in vim
+ff() { fzf | xargs -r -I % $EDITOR % ;}
+
+# FZF - find process and kill it
+fkill() {
+  ps aux | fzf | awk '{ print2 }' | xargs kill
+}
+
+
 
   # Open output of a command in nvim
   vo() {
