@@ -20,3 +20,4 @@ md 	~/Documents/dotfiles/
 mn	/mnt
 dev 	~/devops
 pkg 	~/Documents/pkglist
+grc   /home/kali/github/myrepos/control-repo

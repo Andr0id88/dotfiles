@@ -83,6 +83,10 @@ map gpkg :cd ~/Documents/pkglist<CR>
 map tpkg <tab>:cd ~/Documents/pkglist<CR><tab>
 map Mpkg <tab>:cd ~/Documents/pkglist<CR><tab>:mo<CR>
 map Ypkg <tab>:cd ~/Documents/pkglist<CR><tab>:co<CR>
+map ggrc :cd /home/kali/github/myrepos/control-repo<CR>
+map tgrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>
+map Mgrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>:mo<CR>
+map Ygrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>:co<CR>
 map bf :e ~/.config/bmfiles<CR>
 map bd :e ~/.config/bmdirs<CR>
 map cfb :e ~/.bashrc<CR>

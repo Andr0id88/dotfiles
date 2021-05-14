@@ -20,6 +20,7 @@ md="cd ~/Documents/dotfiles/ && ls -a" \
 mn="cd /mnt && ls -a" \
 dev="cd ~/devops && ls -a" \
 pkg="cd ~/Documents/pkglist && ls -a" \
+grc="cd /home/kali/github/myrepos/control-repo && ls -a" \
 bf="$EDITOR ~/.config/bmfiles" \
 bd="$EDITOR ~/.config/bmdirs" \
 cfb="$EDITOR ~/.bashrc" \

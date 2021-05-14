@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+
+#######################################################################
+#                               Author                                #
+#######################################################################
+#					    						 _       ___  _     _  ___   ___            #
+# 		     /\             | |     / _ \(_)   | |/ _ \ / _ \           #
+#         /  \   _ __   __| |_ __| | | |_  __| | (_) | (_) |          #
+#        / /\ \ | '_ \ / _  | '__| | | | |/ _  |> _ < > _ <           #
+#       / ____ \| | | | (_| | |  | |_| | | (_| | (_) | (_) |          #
+#      /_/    \_\_| |_|\__,_|_|   \___/|_|\__,_|\___/ \___/           #
+#                                                                     #
+#######################################################################
+# File: mks
+# Created:05/14/21
+# Last Modified: 2020-03-26
+
+# Description:
+# 1. Search for text in files using Ripgrep
+# 2. Interactively narrow down the list using fzf
+# 3. Open the file in Vim
+IFS=: read -ra selected < <(
+  rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+    fzf --ansi \
+        --color "hl:-1:underline,hl+:-1:underline:reverse" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+)
+[ -n "${selected[0]}" ] && vim "${selected[0]}" "+${selected[1]}"
