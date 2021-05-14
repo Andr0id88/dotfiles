@@ -59,10 +59,10 @@ map gsct :cd ~/.local/bin/tools<CR>
 map tsct <tab>:cd ~/.local/bin/tools<CR><tab>
 map Msct <tab>:cd ~/.local/bin/tools<CR><tab>:mo<CR>
 map Ysct <tab>:cd ~/.local/bin/tools<CR><tab>:co<CR>
-map gmg :cd ~/github/myrepos<CR>
-map tmg <tab>:cd ~/github/myrepos<CR><tab>
-map Mmg <tab>:cd ~/github/myrepos<CR><tab>:mo<CR>
-map Ymg <tab>:cd ~/github/myrepos<CR><tab>:co<CR>
+map ggr :cd ~/github/myrepos<CR>
+map tgr <tab>:cd ~/github/myrepos<CR><tab>
+map Mgr <tab>:cd ~/github/myrepos<CR><tab>:mo<CR>
+map Ygr <tab>:cd ~/github/myrepos<CR><tab>:co<CR>
 map geg :cd ~/github/external<CR>
 map teg <tab>:cd ~/github/external<CR><tab>
 map Meg <tab>:cd ~/github/external<CR><tab>:mo<CR>

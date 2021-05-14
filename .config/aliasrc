@@ -23,6 +23,8 @@
 #                                Alias                                #
 #######################################################################
 alias ka="killall" \
+  pw="passmenu" \
+  pwi="pass insert $*" \
   to="qbittorrent &" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	magit="nvim -c Magit" \
@@ -85,24 +87,23 @@ alias ka="killall" \
   mscreen="xrandr --output DP-1-2 --mode 1920x1080 --output HDMI-2 --mode 1920x1080 --left-of DP-1-2 --output DP-1-3 --mode 1920x1080 --right-of DP-1-2" \
   awx="firefox -new-window http://127.0.0.1/#/login" \
   cockpit="firefox -new-window http://127.0.0.1:9090" \
-  fdiff="git status -s  | fzf --no-sort --reverse --preview 'git diff --color=always {+2} | diff-so-fancy' --bind=ctrl-j:preview-down --bind=ctrl-k:preview-up --preview-window=right:60%:wrap" \
-
 
 
 #######################################################################
 #                              Functions                              #
 #######################################################################
-# ga="git add ." \
+
 # Find and logon to server in serverlist
 fs(){
-  host=$(/bin/cat ~/Documents/serverlists/* | fzf -m)
-  xpanes --ssh $host
+  host=$(/bin/cat ~/Documents/serverlist | fzf -m)
+  xpanes --ssh -x $host
 }
 
-# Find IP for a FQDN
+# Find IP for a FQDN, can do multiple lookups by marking hosts with tab
 fip(){
-  host=$(/bin/cat ~/Documents/serverlists/* | fzf -m)
-  host $host
+  host=$(/bin/cat ~/Documents/serverlist | fzf -m)
+    for servers in $(echo $host);
+    do; host $servers; done;
 }
 
 # fbr - checkout git branch
@@ -118,7 +119,69 @@ fbr() {
 
 }
 
-findf() {
+# Needed for fdiff
+alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
+_gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
+
+# Show git commits with preview
+fdiff() {
+    glNoGraph |
+        fzf --no-sort --reverse --tiebreak=index --no-multi \
+            --ansi --preview="$_viewGitLogLine" \
+                --header "enter to view, alt-y to copy hash" \
+                --bind "enter:execute:$_viewGitLogLine   | less -R" \
+                --bind "alt-y:execute:$_gitLogLineToHash | xclip"
+}
+
+# A better way to deal with git stashes
+fstash() {
+  local out q k sha
+  while out=$(
+    git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
+    fzf --ansi --no-sort --query="$q" --print-query \
+        --expect=ctrl-d,ctrl-b);
+  do
+    mapfile -t out <<< "$out"
+    q="${out[0]}"
+    k="${out[1]}"
+    sha="${out[-1]}"
+    sha="${sha%% *}"
+    [[ -z "$sha" ]] && continue
+    if [[ "$k" == 'ctrl-d' ]]; then
+      git diff $sha
+    elif [[ "$k" == 'ctrl-b' ]]; then
+      git stash branch "stash-$sha" $sha
+      break;
+    else
+      git stash show -p $sha
+    fi
+  done
+}
+
+# Find and kill tmux sessions
+fkt () {
+    local sessions
+    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
+    local i
+    for i in "${(f@)sessions}"
+    do
+        [[ $i =~ '([^:]*):.*' ]] && {
+            echo "Killing $match[1]"
+            tmux kill-session -t "$match[1]"
+        }
+    done
+}
+
+tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+ffind() {
 nvim $(rg $1 | fzf)
 }
 

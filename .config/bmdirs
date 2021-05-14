@@ -14,10 +14,11 @@ cf	~/.config
 sc	~/.local/bin
 cs 	~/Documents/cheatsheets
 sct	~/.local/bin/tools
-mg 	~/github/myrepos
+gr 	~/github/myrepos
 eg 	~/github/external
 md 	~/Documents/dotfiles/
 mn	/mnt
 dev 	~/devops
 pkg 	~/Documents/pkglist
 grc   /home/kali/github/myrepos/control-repo
+pws  ~/.password-store
