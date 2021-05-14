@@ -57,7 +57,7 @@ do
    printf "#     %s     #" "$folder"
    printf "##############\n"
    cd "$mygitfolder/$folder" || printf "%s is not a folder....skipping" "$folder";
-   git status | grep -v "nothing to commit, working tree clean" | grep -v "On branch master" | grep -v "On branch production"
+   git status | grep -v "nothing to commit, working tree clean" | grep -v "On branch master" | grep -v "On branch production" | grep -v "nothing to commit"
 
  done
 
