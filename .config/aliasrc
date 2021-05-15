@@ -25,6 +25,7 @@
 alias ka="killall" \
   pw="passmenu" \
   pwi="pass insert $*" \
+  r="ranger" \
   to="qbittorrent &" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	magit="nvim -c Magit" \

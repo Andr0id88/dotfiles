@@ -87,6 +87,10 @@ map ggrc :cd /home/kali/github/myrepos/control-repo<CR>
 map tgrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>
 map Mgrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>:mo<CR>
 map Ygrc <tab>:cd /home/kali/github/myrepos/control-repo<CR><tab>:co<CR>
+map gpws :cd ~/.password-store<CR>
+map tpws <tab>:cd ~/.password-store<CR><tab>
+map Mpws <tab>:cd ~/.password-store<CR><tab>:mo<CR>
+map Ypws <tab>:cd ~/.password-store<CR><tab>:co<CR>
 map bf :e ~/.config/bmfiles<CR>
 map bd :e ~/.config/bmdirs<CR>
 map cfb :e ~/.bashrc<CR>

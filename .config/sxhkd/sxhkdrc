@@ -31,6 +31,8 @@ super + shift + g
 	gimp
 super + shift + t
   transmission-remote-cli
+super + shift + p
+  passmenu
 # Et cetera...
 super + grave
 	dmenuunicode
