@@ -31,7 +31,6 @@ alias ka="killall" \
 	magit="nvim -c Magit" \
 	p="sudo pacman" \
 	SS="sudo systemctl" \
-	f="vifm" \
 	g="git" \
 	trc="transmission-remote-cli" \
   tsm="transmission-remote" \
@@ -93,6 +92,10 @@ alias ka="killall" \
 #######################################################################
 #                              Functions                              #
 #######################################################################
+
+fman() {
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
 
 # Find and logon to server in serverlist
 fs(){
